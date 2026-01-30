@@ -6,30 +6,33 @@ import {
   Github,
   Terminal,
   GraduationCap,
+  Download,
 } from "lucide-react";
 import Link from "next/link";
 
 const publications = [
   {
     title: "Political Attitude Networks in Brazil using ResIN",
-    authors: "Hugo Souza-Almeida et al.",
+    authors: "Hugo Souza-Almeida",
     institution: "UTFPR / UNIGOU",
-    year: 2023,
+    year: 2025,
     description:
       "Research analyzing political attitude networks in Brazil using the ResIN methodology, exploring polarization patterns and network dynamics in Brazilian politics.",
     github:
       "https://github.com/dezugin/Political_Attitude_Networks_Brazil_ResIN",
+    pdf: "/papers/political-attitude-networks-brazil-resin-2025.pdf",
     type: "international",
     tags: ["Network Science", "Political Science", "Data Analysis"],
   },
   {
     title: "Network Effects of Firehosing",
-    authors: "Hugo Souza-Almeida",
+    authors: "Hugo Souza-Almeida, Humberto Torres-Neto",
     institution: "PUC Minas",
     year: 2023,
     description:
       "Bachelor's thesis exploring the network effects of firehosing disinformation tactics and their propagation patterns in social networks.",
     github: "https://github.com/dezugin/tcc",
+    pdf: "/papers/network-effects-firehosing-thesis-2023.pdf",
     type: "thesis",
     tags: ["Disinformation", "Network Analysis", "Social Media"],
   },
@@ -129,16 +132,26 @@ export default function Research() {
                     ))}
                   </div>
 
-                  {/* Link */}
-                  <Link
-                    href={paper.github}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 text-sm text-green-400 hover:text-green-300 transition-colors font-mono"
-                  >
-                    <Github className="w-4 h-4" />
-                    View on GitHub
-                    <ExternalLink className="w-3 h-3" />
-                  </Link>
+                  {/* Links */}
+                  <div className="flex flex-wrap gap-4">
+                    <Link
+                      href={paper.github}
+                      target="_blank"
+                      className="inline-flex items-center gap-2 text-sm text-green-400 hover:text-green-300 transition-colors font-mono"
+                    >
+                      <Github className="w-4 h-4" />
+                      View on GitHub
+                      <ExternalLink className="w-3 h-3" />
+                    </Link>
+                    <a
+                      href={paper.pdf}
+                      download
+                      className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors font-mono"
+                    >
+                      <Download className="w-4 h-4" />
+                      Download PDF
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
