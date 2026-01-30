@@ -18,8 +18,8 @@ export default function Home() {
       <Skills />
       <CodeProjects />
       <Research />
-      <Reading />
       <Courses />
+      <Reading />
       <Contact />
       <Footer />
     </main>
