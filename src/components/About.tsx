@@ -29,21 +29,19 @@ export default function About() {
             <div className="text-green-600 mb-4">{"/* profile.json */"}</div>
             <pre className="text-green-400/90 overflow-x-auto">
               {`{
-  "name": "Hugo Souza",
+  "name": "Hugo Souza-Almeida",
   "handle": "@dezugin",
-  "role": "Full Stack Engineer",
+  "role": "Full Stack Developer",
   "company": "RHI Magnesita",
   "location": "Belo Horizonte, BR",
   "education": {
-    "degree": "BSc Computer Science",
-    "university": "PUC Minas"
+    "bsc": "Computer Science - PUC Minas",
+    "postgrad_1": "Information Security - UTFPR",
+    "postgrad_2": "Digital Forensics - IPOG"
   },
-  "background": [
-    "Law",
-    "International Relations"
-  ],
   "interests": [
-    "DevOps",
+    "Full Stack Development",
+    "DevOps & Cloud",
     "Data Engineering", 
     "Web Scraping",
     "Open Source"
@@ -59,23 +57,28 @@ export default function About() {
                 {">"} Bio
               </h3>
               <p className="text-green-300/80 leading-relaxed mb-4">
-                Full Stack Engineer at RHI Magnesita, formerly DevOps Engineer
-                at the same company, Data Analyst Intern at 3778 (a Brazilian
-                healthtech startup), and Information Security Intern at
-                Symplicity.
+                <span className="text-cyan-400">Full Stack Developer</span> with
+                5+ years of experience building end-to-end solutions. Currently
+                at RHI Magnesita, working across the entire stack—from frontend
+                interfaces to backend systems and cloud infrastructure.
               </p>
               <p className="text-green-300/80 leading-relaxed mb-4">
-                I hold a Bachelor&apos;s in Computer Science from Pontifícia
-                Universidade Católica de Minas Gerais, one of the largest
-                universities in Latin America. I also have a background in Law
-                and International Relations, bringing a unique perspective to
-                tech.
+                I hold a BSc in Computer Science from PUC Minas, with
+                postgraduate studies in Information Security (UTFPR) and Digital
+                Forensics (IPOG). My work spans OutSystems, JavaScript, C#,
+                Python, and modern DevOps practices.
+              </p>
+              <p className="text-green-300/80 leading-relaxed mb-4">
+                Beyond code, I&apos;m also a{" "}
+                <span className="text-yellow-400/80">Tradutor Juramentado</span>{" "}
+                (sworn translator) for Portuguese and English, a side of my
+                varied interests that keeps me connected to language and
+                communication.
               </p>
               <p className="text-green-300/80 leading-relaxed">
-                I love learning new things and building tools that make a
-                difference. From web scrapers for healthcare data to CI/CD
-                pipelines on Azure, I enjoy tackling diverse technical
-                challenges.
+                When not coding, you&apos;ll find me reading (280+ books and
+                counting), researching, or exploring whatever topic catches my
+                curiosity.
               </p>
             </div>
 
@@ -125,8 +128,8 @@ export default function About() {
                     focus
                   </span>
                 </div>
-                <div className="text-green-400 font-medium">DevOps & Data</div>
-                <div className="text-green-600/60 text-sm">Engineering</div>
+                <div className="text-green-400 font-medium">Full Stack</div>
+                <div className="text-green-600/60 text-sm">+ DevOps & Data</div>
               </div>
             </div>
           </div>

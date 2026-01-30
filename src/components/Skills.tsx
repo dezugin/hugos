@@ -61,6 +61,7 @@ const languages = [
   { name: "Portuguese", level: "Native", percentage: 100, flag: "🇧🇷" },
   { name: "English", level: "Fluent", percentage: 95, flag: "🇺🇸" },
   { name: "Spanish", level: "Intermediate", percentage: 60, flag: "🇪🇸" },
+  { name: "Russian", level: "Intermediate", percentage: 50, flag: "🇷🇺" },
 ];
 
 export default function Skills() {

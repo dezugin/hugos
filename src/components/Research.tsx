@@ -12,7 +12,7 @@ import Link from "next/link";
 const publications = [
   {
     title: "Political Attitude Networks in Brazil using ResIN",
-    authors: "Hugo Souza et al.",
+    authors: "Hugo Souza-Almeida et al.",
     institution: "UTFPR / UNIGOU",
     year: 2023,
     description:
@@ -24,7 +24,7 @@ const publications = [
   },
   {
     title: "Network Effects of Firehosing",
-    authors: "Hugo Souza",
+    authors: "Hugo Souza-Almeida",
     institution: "PUC Minas",
     year: 2023,
     description:

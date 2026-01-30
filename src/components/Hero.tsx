@@ -14,16 +14,13 @@ import { useEffect, useState } from "react";
 
 const terminalLines = [
   { type: "command", text: "whoami" },
-  { type: "output", text: "hugo_souza" },
+  { type: "output", text: "hugo_souza_almeida" },
   { type: "command", text: "cat role.txt" },
-  { type: "output", text: "Full Stack Engineer @ RHI Magnesita" },
+  { type: "output", text: "Full Stack Developer @ RHI Magnesita" },
+  { type: "command", text: "cat stack.txt" },
+  { type: "output", text: "frontend/ backend/ devops/ data/ cloud/" },
   { type: "command", text: "cat location.txt" },
   { type: "output", text: "Belo Horizonte, Brazil 🇧🇷" },
-  { type: "command", text: "ls skills/" },
-  {
-    type: "output",
-    text: "devops/  data-engineering/  web-dev/  python/  azure/",
-  },
 ];
 
 export default function Hero() {
@@ -105,23 +102,19 @@ export default function Hero() {
         {/* Info Cards Below Terminal */}
         <div className="mt-8 grid md:grid-cols-3 gap-4">
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-            <div className="text-green-600 text-xs mb-1">{"// experience"}</div>
-            <div className="text-green-400 font-bold">5+ Years</div>
-            <div className="text-green-600/60 text-sm">
-              in Software Engineering
-            </div>
+            <div className="text-green-600 text-xs mb-1">{"// stack"}</div>
+            <div className="text-green-400 font-bold">Full Stack</div>
+            <div className="text-green-600/60 text-sm">Frontend to Cloud</div>
           </div>
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-            <div className="text-green-600 text-xs mb-1">
-              {"// repositories"}
-            </div>
-            <div className="text-green-400 font-bold">32+</div>
-            <div className="text-green-600/60 text-sm">Public Projects</div>
+            <div className="text-green-600 text-xs mb-1">{"// experience"}</div>
+            <div className="text-green-400 font-bold">5+ Years</div>
+            <div className="text-green-600/60 text-sm">in Engineering</div>
           </div>
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
             <div className="text-green-600 text-xs mb-1">{"// education"}</div>
-            <div className="text-green-400 font-bold">BSc CS</div>
-            <div className="text-green-600/60 text-sm">PUC Minas</div>
+            <div className="text-green-400 font-bold">CS + InfoSec</div>
+            <div className="text-green-600/60 text-sm">BSc + Postgrad</div>
           </div>
         </div>
 

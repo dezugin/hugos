@@ -1,8 +1,44 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Send, Github, Linkedin, Terminal } from "lucide-react";
+import {
+  MapPin,
+  Send,
+  Github,
+  Linkedin,
+  Terminal,
+  Code2,
+  BookOpen,
+  Languages,
+} from "lucide-react";
 import Link from "next/link";
+
+const contactEmails = [
+  {
+    type: "Programming & Development",
+    email: "code@hugos.com.br",
+    icon: Code2,
+    color: "text-green-400",
+    bgColor: "bg-green-500/10",
+    borderColor: "border-green-500/30",
+  },
+  {
+    type: "Research & Academia",
+    email: "research@hugos.com.br",
+    icon: BookOpen,
+    color: "text-blue-400",
+    bgColor: "bg-blue-500/10",
+    borderColor: "border-blue-500/30",
+  },
+  {
+    type: "Translation Services",
+    email: "translate@hugos.com.br",
+    icon: Languages,
+    color: "text-yellow-400",
+    bgColor: "bg-yellow-500/10",
+    borderColor: "border-yellow-500/30",
+  },
+];
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -117,31 +153,47 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Contact Links */}
-            <div className="space-y-4">
-              <Link
-                href="mailto:hugosza@outlook.com"
-                className="flex items-center gap-4 p-4 bg-terminal-bg border border-terminal-green/20 rounded-lg hover:border-terminal-green/50 transition-all group"
-              >
-                <div className="w-10 h-10 bg-terminal-green/10 border border-terminal-green/30 rounded flex items-center justify-center group-hover:bg-terminal-green/20 transition-colors">
-                  <Mail className="w-5 h-5 text-terminal-green" />
-                </div>
-                <div>
-                  <p className="text-terminal-green/50 text-xs">Email</p>
-                  <p className="terminal-text group-hover:text-terminal-green transition-colors">
-                    hugosza@outlook.com
-                  </p>
-                </div>
-              </Link>
+            {/* Contact Emails by Type */}
+            <div className="space-y-3">
+              <p className="text-terminal-green/60 text-sm mb-3 font-mono">
+                {"// contact_emails"}
+              </p>
+              {contactEmails.map((contact) => {
+                const IconComponent = contact.icon;
+                return (
+                  <Link
+                    key={contact.email}
+                    href={`mailto:${contact.email}`}
+                    className={`flex items-center gap-4 p-4 bg-terminal-bg border ${contact.borderColor} rounded-lg hover:border-opacity-100 transition-all group`}
+                  >
+                    <div
+                      className={`w-10 h-10 ${contact.bgColor} border ${contact.borderColor} rounded flex items-center justify-center group-hover:scale-105 transition-transform`}
+                    >
+                      <IconComponent className={`w-5 h-5 ${contact.color}`} />
+                    </div>
+                    <div>
+                      <p className="text-terminal-green/50 text-xs">
+                        {contact.type}
+                      </p>
+                      <p
+                        className={`${contact.color} group-hover:brightness-125 transition-all font-mono`}
+                      >
+                        {contact.email}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
 
-              <div className="flex items-center gap-4 p-4 bg-terminal-bg border border-terminal-green/20 rounded-lg">
-                <div className="w-10 h-10 bg-terminal-green/10 border border-terminal-green/30 rounded flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-terminal-green" />
-                </div>
-                <div>
-                  <p className="text-terminal-green/50 text-xs">Location</p>
-                  <p className="terminal-text">Belo Horizonte, MG, Brazil</p>
-                </div>
+            {/* Location */}
+            <div className="flex items-center gap-4 p-4 bg-terminal-bg border border-terminal-green/20 rounded-lg">
+              <div className="w-10 h-10 bg-terminal-green/10 border border-terminal-green/30 rounded flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-terminal-green" />
+              </div>
+              <div>
+                <p className="text-terminal-green/50 text-xs">Location</p>
+                <p className="terminal-text">Belo Horizonte, MG, Brazil</p>
               </div>
             </div>
 
@@ -273,17 +325,17 @@ export default function Contact() {
                       <option value="" className="bg-terminal-dark">
                         --select--
                       </option>
+                      <option value="development" className="bg-terminal-dark">
+                        Development / Full Stack
+                      </option>
                       <option value="opportunity" className="bg-terminal-dark">
                         Job Opportunity
                       </option>
-                      <option
-                        value="collaboration"
-                        className="bg-terminal-dark"
-                      >
-                        Collaboration
-                      </option>
                       <option value="research" className="bg-terminal-dark">
-                        Research
+                        Research Collaboration
+                      </option>
+                      <option value="translation" className="bg-terminal-dark">
+                        Translation Services
                       </option>
                       <option value="consulting" className="bg-terminal-dark">
                         Consulting

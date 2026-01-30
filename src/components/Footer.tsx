@@ -76,6 +76,14 @@ export default function Footer() {
             <ul className="space-y-2 text-terminal-green/60 text-sm font-mono">
               <li>
                 <Link
+                  href="#reading"
+                  className="hover:text-terminal-green transition-colors"
+                >
+                  ./reading
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="#courses"
                   className="hover:text-terminal-green transition-colors"
                 >
