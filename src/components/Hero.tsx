@@ -18,9 +18,19 @@ const terminalLines = [
   { type: "command", text: "cat role.txt" },
   { type: "output", text: "Full Stack Developer @ RHI Magnesita" },
   { type: "command", text: "cat stack.txt" },
-  { type: "output", text: "frontend/ backend/ devops/ data/ cloud/" },
+  {
+    type: "output",
+    text: "frontend/ backend/ devops/ data/ cloud/ translations/",
+  },
   { type: "command", text: "cat location.txt" },
   { type: "output", text: "Belo Horizonte, Brazil 🇧🇷" },
+  { type: "command", text: "cat translator.txt" },
+  {
+    type: "output",
+    text: "🌐 Tradutor Juramentado (Sworn Translator)",
+    link: true,
+  },
+  { type: "output", text: "   Portuguese <-> English" },
 ];
 
 export default function Hero() {
@@ -85,6 +95,19 @@ export default function Hero() {
                     <span className="text-green-500 mr-2">❯</span>
                     <span className="text-green-300">{line.text}</span>
                   </>
+                ) : line.link ? (
+                  <button
+                    onClick={() => {
+                      window.location.hash = "contact?subject=translation";
+                      const contactSection = document.getElementById("contact");
+                      if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    className="text-yellow-400/90 ml-4 hover:text-yellow-300 cursor-pointer transition-colors"
+                  >
+                    {line.text}
+                  </button>
                 ) : (
                   <span className="text-green-500/70 ml-4">{line.text}</span>
                 )}
@@ -108,7 +131,7 @@ export default function Hero() {
           </div>
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
             <div className="text-green-600 text-xs mb-1">{"// experience"}</div>
-            <div className="text-green-400 font-bold">5+ Years</div>
+            <div className="text-green-400 font-bold">3-5 Years</div>
             <div className="text-green-600/60 text-sm">in Engineering</div>
           </div>
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
