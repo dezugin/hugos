@@ -122,7 +122,7 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4 text-terminal-green/60 group-hover:text-terminal-green transition-colors" />
               </Link>
               <Link
-                href="mailto:hugosza@outlook.com"
+                href="mailto:hey@hugos.com.br"
                 className="w-10 h-10 bg-terminal-dark border border-terminal-green/30 rounded flex items-center justify-center hover:border-terminal-green hover:bg-terminal-green/10 transition-all group"
               >
                 <Mail className="w-4 h-4 text-terminal-green/60 group-hover:text-terminal-green transition-colors" />

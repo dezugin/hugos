@@ -298,6 +298,55 @@ export default function Courses() {
           </div>
         </div>
 
+        {/* Certifications */}
+        <div className="mb-16">
+          <h3 className="text-xl font-bold terminal-text mb-6 flex items-center gap-3">
+            <Award className="w-5 h-5 text-cyan-400" />
+            <span className="text-terminal-green/60">~/</span>certifications/
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {certifications.map((cert) => {
+              const IconComponent = cert.icon;
+              return (
+                <div
+                  key={cert.title}
+                  className="bg-terminal-dark border border-cyan-500/30 rounded-lg p-6 hover:border-cyan-500/50 transition-all"
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 bg-cyan-500/10 border border-cyan-500/30 rounded-lg flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-cyan-400" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-cyan-400/60 text-xs">
+                          {cert.date}
+                        </span>
+                        <CheckCircle className="w-3 h-3 text-cyan-400" />
+                      </div>
+                      <h4 className="font-bold terminal-text text-lg">
+                        {cert.title}
+                      </h4>
+                      <p className="text-terminal-green/60 text-sm">
+                        {cert.issuer}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {cert.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400/80 rounded text-xs font-mono"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Nanodegrees */}
         <div className="mb-16">
           <h3 className="text-xl font-bold terminal-text mb-6 flex items-center gap-3">
@@ -400,55 +449,6 @@ export default function Courses() {
                       <span
                         key={skill}
                         className="px-2 py-0.5 bg-terminal-green/10 text-terminal-green/70 rounded text-xs"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Certifications */}
-        <div>
-          <h3 className="text-xl font-bold terminal-text mb-6 flex items-center gap-3">
-            <Award className="w-5 h-5 text-cyan-400" />
-            <span className="text-terminal-green/60">~/</span>certifications/
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            {certifications.map((cert) => {
-              const IconComponent = cert.icon;
-              return (
-                <div
-                  key={cert.title}
-                  className="bg-terminal-dark border border-cyan-500/30 rounded-lg p-6 hover:border-cyan-500/50 transition-all"
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-cyan-500/10 border border-cyan-500/30 rounded-lg flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-cyan-400" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-cyan-400/60 text-xs">
-                          {cert.date}
-                        </span>
-                        <CheckCircle className="w-3 h-3 text-cyan-400" />
-                      </div>
-                      <h4 className="font-bold terminal-text text-lg">
-                        {cert.title}
-                      </h4>
-                      <p className="text-terminal-green/60 text-sm">
-                        {cert.issuer}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {cert.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-2 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400/80 rounded text-xs font-mono"
                       >
                         {skill}
                       </span>

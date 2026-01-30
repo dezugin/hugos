@@ -193,10 +193,10 @@ export default function Translation() {
               Request a Quote
             </Link>
             <Link
-              href="mailto:translations@example.com"
+              href="mailto:translate@hugos.com.br"
               className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition-colors"
             >
-              translations@example.com
+              translate@hugos.com.br
             </Link>
           </div>
         </div>

@@ -134,15 +134,21 @@ export default function Hero() {
           >
             <Linkedin className="w-5 h-5 text-green-500 group-hover:text-green-400" />
           </Link>
-          <Link
-            href="https://hugos.com.br"
-            target="_blank"
-            className="p-3 bg-gray-950 border border-green-900/50 rounded-lg hover:border-green-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transition-all group"
+          <button
+            onClick={() => {
+              window.location.hash = "contact?subject=translation";
+              const contactSection = document.getElementById("contact");
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="p-3 bg-gray-950 border border-yellow-900/50 rounded-lg hover:border-yellow-500 hover:shadow-[0_0_15px_rgba(234,179,8,0.3)] transition-all group cursor-pointer"
+            title="Translation Services"
           >
-            <Globe className="w-5 h-5 text-green-500 group-hover:text-green-400" />
-          </Link>
+            <Globe className="w-5 h-5 text-yellow-500 group-hover:text-yellow-400" />
+          </button>
           <Link
-            href="mailto:contact@hugos.com.br"
+            href="mailto:hey@hugos.com.br"
             className="p-3 bg-gray-950 border border-green-900/50 rounded-lg hover:border-green-500 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transition-all group"
           >
             <Mail className="w-5 h-5 text-green-500 group-hover:text-green-400" />

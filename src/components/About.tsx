@@ -25,10 +25,11 @@ export default function About() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* ASCII Art / Terminal Profile */}
-          <div className="bg-gray-950 border border-green-900/50 rounded-lg p-6 font-mono text-sm">
-            <div className="text-green-600 mb-4">{"/* profile.json */"}</div>
-            <pre className="text-green-400/90 overflow-x-auto">
-              {`{
+          <div className="space-y-6">
+            <div className="bg-gray-950 border border-green-900/50 rounded-lg p-6 font-mono text-sm">
+              <div className="text-green-600 mb-4">{"/* profile.json */"}</div>
+              <pre className="text-green-400/90 overflow-x-auto">
+                {`{
   "name": "Hugo Souza-Almeida",
   "handle": "@dezugin",
   "role": "Full Stack Developer",
@@ -47,7 +48,54 @@ export default function About() {
     "Open Source"
   ]
 }`}
-            </pre>
+              </pre>
+            </div>
+
+            {/* Sworn Translator Terminal */}
+            <button
+              onClick={() => {
+                window.location.hash = "contact?subject=translation";
+                const contactSection = document.getElementById("contact");
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="block w-full text-left bg-gray-950 border border-yellow-900/50 rounded-lg p-6 font-mono text-sm hover:border-yellow-500/50 transition-all group cursor-pointer"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                </div>
+                <span className="text-yellow-500/60 text-xs ml-2">
+                  translator.sh
+                </span>
+              </div>
+              <div className="space-y-2">
+                <p className="text-yellow-500/70">
+                  <span className="text-yellow-400">$</span> cat
+                  /credentials/translator.txt
+                </p>
+                <div className="pl-4 border-l-2 border-yellow-500/30">
+                  <p className="text-yellow-400/90">
+                    🌐 Tradutor Juramentado (Sworn Translator)
+                  </p>
+                  <p className="text-yellow-500/70">
+                    Portuguese {"<->"} English
+                  </p>
+                  <p className="text-yellow-500/70 mt-2">
+                    Official document translations, legal texts,
+                  </p>
+                  <p className="text-yellow-500/70">
+                    certificates, and technical documentation.
+                  </p>
+                </div>
+                <p className="text-yellow-500/50 mt-3 group-hover:text-yellow-400 transition-colors">
+                  {">"} Click to request translation services_
+                </p>
+              </div>
+            </button>
           </div>
 
           {/* Bio Content */}
@@ -70,7 +118,18 @@ export default function About() {
               </p>
               <p className="text-green-300/80 leading-relaxed mb-4">
                 Beyond code, I&apos;m also a{" "}
-                <span className="text-yellow-400/80">Tradutor Juramentado</span>{" "}
+                <button
+                  onClick={() => {
+                    window.location.hash = "contact?subject=translation";
+                    const contactSection = document.getElementById("contact");
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="text-yellow-400/80 hover:text-yellow-300 underline underline-offset-2 decoration-yellow-400/40 hover:decoration-yellow-300 transition-colors cursor-pointer"
+                >
+                  Tradutor Juramentado
+                </button>{" "}
                 (sworn translator) for Portuguese and English, a side of my
                 varied interests that keeps me connected to language and
                 communication.
