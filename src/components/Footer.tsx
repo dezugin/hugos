@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Link from "next/link";
@@ -142,6 +143,35 @@ export default function Footer() {
             </p>
             <p className="text-terminal-green/40 mt-2 text-xs">
               <span className="text-terminal-green">$</span> exit 0
+            </p>
+          </div>
+
+          {/* Creative Commons License */}
+          <div className="mt-6 text-center">
+            <a
+              rel="license"
+              href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+              target="_blank"
+              className="inline-block"
+            >
+              <img
+                alt="Creative Commons License"
+                style={{ borderWidth: 0 }}
+                src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+                className="mx-auto opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </a>
+            <p className="text-terminal-green/40 text-xs mt-2 font-mono">
+              This work is licensed under a{" "}
+              <a
+                rel="license"
+                href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank"
+                className="text-terminal-green/60 hover:text-terminal-green transition-colors underline"
+              >
+                Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+                International License
+              </a>
             </p>
           </div>
         </div>

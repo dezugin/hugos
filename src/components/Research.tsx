@@ -157,14 +157,6 @@ export default function Research() {
             </div>
           ))}
         </div>
-
-        {/* Note */}
-        <div className="mt-8 p-4 bg-green-500/5 border border-green-900/30 rounded-lg">
-          <p className="text-green-600/80 text-sm font-mono text-center">
-            <span className="text-green-500">{">"}</span> More research papers
-            can be uploaded to /public/papers/ and referenced here
-          </p>
-        </div>
       </div>
     </section>
   );
