@@ -63,7 +63,7 @@ export default function Reading() {
               <style
                 dangerouslySetInnerHTML={{
                   __html: `
-                .gr_custom_container_1769804290 {
+                .gr_custom_container_1769884540 {
                   border: 1px solid #22c55e40;
                   border-radius: 10px;
                   padding: 10px 5px 10px 5px;
@@ -71,19 +71,19 @@ export default function Reading() {
                   color: #22c55e;
                   width: 100%;
                 }
-                .gr_custom_header_1769804290 {
+                .gr_custom_header_1769884540 {
                   border-bottom: 1px solid #22c55e40;
                   width: 100%;
                   margin-bottom: 5px;
                   text-align: center;
                   font-size: 110%;
                 }
-                .gr_custom_header_1769804290 a {
+                .gr_custom_header_1769884540 a {
                   color: #4ade80 !important;
                   text-decoration: none;
                   font-family: monospace;
                 }
-                .gr_custom_each_container_1769804290 {
+                .gr_custom_each_container_1769884540 {
                   width: 100%;
                   clear: both;
                   margin-bottom: 10px;
@@ -91,42 +91,42 @@ export default function Reading() {
                   padding-bottom: 4px;
                   border-bottom: 1px solid #22c55e30;
                 }
-                .gr_custom_book_container_1769804290 {
+                .gr_custom_book_container_1769884540 {
                   overflow: hidden;
                   height: 60px;
                   float: left;
-                  margin-right: 8px;
+                  margin-right: 4px;
                   width: 39px;
                 }
-                .gr_custom_book_container_1769804290 img {
+                .gr_custom_book_container_1769884540 img {
                   border-radius: 4px;
                 }
-                .gr_custom_title_1769804290 a {
+                .gr_custom_title_1769884540 a {
                   color: #4ade80 !important;
                   text-decoration: none;
                   font-size: 12px;
                 }
-                .gr_custom_author_1769804290 {
+                .gr_custom_author_1769884540 {
                   font-size: 10px;
                   color: #22c55e99;
                 }
-                .gr_custom_author_1769804290 a {
+                .gr_custom_author_1769884540 a {
                   color: #22c55e99 !important;
                   text-decoration: none;
                 }
-                .gr_custom_tags_1769804290 {
+                .gr_custom_tags_1769884540 {
                   font-size: 10px;
                   color: #22c55e60;
                 }
-                .gr_custom_rating_1769804290 {
+                .gr_custom_rating_1769884540 {
                   float: right;
                 }
               `,
                 }}
               />
-              <div id="gr_custom_widget_1769804290">
-                <div className="gr_custom_container_1769804290">
-                  <h2 className="gr_custom_header_1769804290">
+              <div id="gr_custom_widget_1769884540">
+                <div className="gr_custom_container_1769884540">
+                  <h2 className="gr_custom_header_1769884540">
                     <a
                       rel="nofollow"
                       href="https://www.goodreads.com/review/list/26600451-hugo-souza?shelf=currently-reading&utm_medium=api&utm_source=custom_widget"
@@ -134,132 +134,42 @@ export default function Reading() {
                       Currently Reading
                     </a>
                   </h2>
-                  <div className="gr_custom_each_container_1769804290">
-                    <div className="gr_custom_book_container_1769804290">
+                  <div className="gr_custom_each_container_1769884540">
+                    <div className="gr_custom_book_container_1769884540">
                       <a
-                        title="Refactoring: Improving the Design of Existing Code"
+                        title="Polymath: Master Multiple Disciplines, Learn New Skills, Think Flexibly, and Become Extraordinary Autodidact"
                         rel="nofollow"
-                        href="https://www.goodreads.com/review/show/4384460400?utm_medium=api&utm_source=custom_widget"
+                        href="https://www.goodreads.com/review/show/8317500282?utm_medium=api&utm_source=custom_widget"
                       >
                         <img
-                          alt="Refactoring"
-                          src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1386925632l/44936._SX50_.jpg"
+                          alt="Polymath"
+                          src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1589005551l/53353009._SY75_.jpg"
                         />
                       </a>
                     </div>
-                    <div className="gr_custom_title_1769804290">
+                    <div className="gr_custom_title_1769884540">
                       <a
                         rel="nofollow"
-                        href="https://www.goodreads.com/review/show/4384460400?utm_medium=api&utm_source=custom_widget"
+                        href="https://www.goodreads.com/review/show/8317500282?utm_medium=api&utm_source=custom_widget"
                       >
-                        Refactoring: Improving the Design of Existing Code
+                        Polymath: Master Multiple Disciplines
                       </a>
                     </div>
-                    <div className="gr_custom_author_1769804290">
+                    <div className="gr_custom_author_1769884540">
                       by{" "}
                       <a
                         rel="nofollow"
-                        href="https://www.goodreads.com/author/show/25215.Martin_Fowler"
+                        href="https://www.goodreads.com/author/show/16593818.Peter_Hollins"
                       >
-                        Martin Fowler
+                        Peter Hollins
                       </a>
+                    </div>
+                    <div className="gr_custom_tags_1769884540">
+                      tagged: currently-reading
                     </div>
                   </div>
-                  <div className="gr_custom_each_container_1769804290">
-                    <div className="gr_custom_book_container_1769804290">
-                      <a
-                        title="Капитанская дочка"
-                        rel="nofollow"
-                        href="https://www.goodreads.com/review/show/4404485320?utm_medium=api&utm_source=custom_widget"
-                      >
-                        <img
-                          alt="Капитанская дочка"
-                          src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1503238276l/36074940._SY75_.jpg"
-                        />
-                      </a>
-                    </div>
-                    <div className="gr_custom_title_1769804290">
-                      <a
-                        rel="nofollow"
-                        href="https://www.goodreads.com/review/show/4404485320?utm_medium=api&utm_source=custom_widget"
-                      >
-                        Капитанская дочка
-                      </a>
-                    </div>
-                    <div className="gr_custom_author_1769804290">
-                      by{" "}
-                      <a
-                        rel="nofollow"
-                        href="https://www.goodreads.com/author/show/16070.Alexander_Pushkin"
-                      >
-                        Alexander Pushkin
-                      </a>
-                    </div>
-                  </div>
-                  <div className="gr_custom_each_container_1769804290">
-                    <div className="gr_custom_book_container_1769804290">
-                      <a
-                        title="In Search of Lost Time"
-                        rel="nofollow"
-                        href="https://www.goodreads.com/review/show/5294309113?utm_medium=api&utm_source=custom_widget"
-                      >
-                        <img
-                          alt="In Search of Lost Time"
-                          src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1657567516l/18796._SX50_.jpg"
-                        />
-                      </a>
-                    </div>
-                    <div className="gr_custom_title_1769804290">
-                      <a
-                        rel="nofollow"
-                        href="https://www.goodreads.com/review/show/5294309113?utm_medium=api&utm_source=custom_widget"
-                      >
-                        In Search of Lost Time
-                      </a>
-                    </div>
-                    <div className="gr_custom_author_1769804290">
-                      by{" "}
-                      <a
-                        rel="nofollow"
-                        href="https://www.goodreads.com/author/show/233619.Marcel_Proust"
-                      >
-                        Marcel Proust
-                      </a>
-                    </div>
-                  </div>
-                  <div className="gr_custom_each_container_1769804290">
-                    <div className="gr_custom_book_container_1769804290">
-                      <a
-                        title="Gödel, Escher, Bach: An Eternal Golden Braid"
-                        rel="nofollow"
-                        href="https://www.goodreads.com/review/show/6947540957?utm_medium=api&utm_source=custom_widget"
-                      >
-                        <img
-                          alt="Gödel, Escher, Bach"
-                          src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1547125681l/24113._SY75_.jpg"
-                        />
-                      </a>
-                    </div>
-                    <div className="gr_custom_title_1769804290">
-                      <a
-                        rel="nofollow"
-                        href="https://www.goodreads.com/review/show/6947540957?utm_medium=api&utm_source=custom_widget"
-                      >
-                        Gödel, Escher, Bach: An Eternal Golden Braid
-                      </a>
-                    </div>
-                    <div className="gr_custom_author_1769804290">
-                      by{" "}
-                      <a
-                        rel="nofollow"
-                        href="https://www.goodreads.com/author/show/3034502.Douglas_R_Hofstadter"
-                      >
-                        Douglas R. Hofstadter
-                      </a>
-                    </div>
-                  </div>
-                  <div className="gr_custom_each_container_1769804290">
-                    <div className="gr_custom_book_container_1769804290">
+                  <div className="gr_custom_each_container_1769884540">
+                    <div className="gr_custom_book_container_1769884540">
                       <a
                         title="The U.S. Army Leadership Field Manual FM 22-100"
                         rel="nofollow"
@@ -271,7 +181,7 @@ export default function Reading() {
                         />
                       </a>
                     </div>
-                    <div className="gr_custom_title_1769804290">
+                    <div className="gr_custom_title_1769884540">
                       <a
                         rel="nofollow"
                         href="https://www.goodreads.com/review/show/8054850898?utm_medium=api&utm_source=custom_widget"
@@ -279,7 +189,7 @@ export default function Reading() {
                         The U.S. Army Leadership Field Manual
                       </a>
                     </div>
-                    <div className="gr_custom_author_1769804290">
+                    <div className="gr_custom_author_1769884540">
                       by{" "}
                       <a
                         rel="nofollow"
@@ -287,6 +197,145 @@ export default function Reading() {
                       >
                         U.S. Army
                       </a>
+                    </div>
+                    <div className="gr_custom_tags_1769884540">
+                      tagged: currently-reading
+                    </div>
+                  </div>
+                  <div className="gr_custom_each_container_1769884540">
+                    <div className="gr_custom_book_container_1769884540">
+                      <a
+                        title="Gödel, Escher, Bach: An Eternal Golden Braid"
+                        rel="nofollow"
+                        href="https://www.goodreads.com/review/show/6947540957?utm_medium=api&utm_source=custom_widget"
+                      >
+                        <img
+                          alt="Gödel, Escher, Bach"
+                          src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1547125681l/24113._SY75_.jpg"
+                        />
+                      </a>
+                    </div>
+                    <div className="gr_custom_title_1769884540">
+                      <a
+                        rel="nofollow"
+                        href="https://www.goodreads.com/review/show/6947540957?utm_medium=api&utm_source=custom_widget"
+                      >
+                        Gödel, Escher, Bach: An Eternal Golden Braid
+                      </a>
+                    </div>
+                    <div className="gr_custom_author_1769884540">
+                      by{" "}
+                      <a
+                        rel="nofollow"
+                        href="https://www.goodreads.com/author/show/3034502.Douglas_R_Hofstadter"
+                      >
+                        Douglas R. Hofstadter
+                      </a>
+                    </div>
+                    <div className="gr_custom_tags_1769884540">
+                      tagged: currently-reading
+                    </div>
+                  </div>
+                  <div className="gr_custom_each_container_1769884540">
+                    <div className="gr_custom_book_container_1769884540">
+                      <a
+                        title="In Search of Lost Time"
+                        rel="nofollow"
+                        href="https://www.goodreads.com/review/show/5294309113?utm_medium=api&utm_source=custom_widget"
+                      >
+                        <img
+                          alt="In Search of Lost Time"
+                          src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1657567516l/18796._SX50_.jpg"
+                        />
+                      </a>
+                    </div>
+                    <div className="gr_custom_title_1769884540">
+                      <a
+                        rel="nofollow"
+                        href="https://www.goodreads.com/review/show/5294309113?utm_medium=api&utm_source=custom_widget"
+                      >
+                        In Search of Lost Time
+                      </a>
+                    </div>
+                    <div className="gr_custom_author_1769884540">
+                      by{" "}
+                      <a
+                        rel="nofollow"
+                        href="https://www.goodreads.com/author/show/233619.Marcel_Proust"
+                      >
+                        Marcel Proust
+                      </a>
+                    </div>
+                    <div className="gr_custom_tags_1769884540">
+                      tagged: currently-reading
+                    </div>
+                  </div>
+                  <div className="gr_custom_each_container_1769884540">
+                    <div className="gr_custom_book_container_1769884540">
+                      <a
+                        title="Капитанская дочка"
+                        rel="nofollow"
+                        href="https://www.goodreads.com/review/show/4404485320?utm_medium=api&utm_source=custom_widget"
+                      >
+                        <img
+                          alt="Капитанская дочка"
+                          src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1503238276l/36074940._SY75_.jpg"
+                        />
+                      </a>
+                    </div>
+                    <div className="gr_custom_title_1769884540">
+                      <a
+                        rel="nofollow"
+                        href="https://www.goodreads.com/review/show/4404485320?utm_medium=api&utm_source=custom_widget"
+                      >
+                        Капитанская дочка
+                      </a>
+                    </div>
+                    <div className="gr_custom_author_1769884540">
+                      by{" "}
+                      <a
+                        rel="nofollow"
+                        href="https://www.goodreads.com/author/show/16070.Alexander_Pushkin"
+                      >
+                        Alexander Pushkin
+                      </a>
+                    </div>
+                    <div className="gr_custom_tags_1769884540">
+                      tagged: currently-reading
+                    </div>
+                  </div>
+                  <div className="gr_custom_each_container_1769884540">
+                    <div className="gr_custom_book_container_1769884540">
+                      <a
+                        title="Refactoring: Improving the Design of Existing Code"
+                        rel="nofollow"
+                        href="https://www.goodreads.com/review/show/4384460400?utm_medium=api&utm_source=custom_widget"
+                      >
+                        <img
+                          alt="Refactoring"
+                          src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1386925632l/44936._SX50_.jpg"
+                        />
+                      </a>
+                    </div>
+                    <div className="gr_custom_title_1769884540">
+                      <a
+                        rel="nofollow"
+                        href="https://www.goodreads.com/review/show/4384460400?utm_medium=api&utm_source=custom_widget"
+                      >
+                        Refactoring: Improving the Design of Existing Code
+                      </a>
+                    </div>
+                    <div className="gr_custom_author_1769884540">
+                      by{" "}
+                      <a
+                        rel="nofollow"
+                        href="https://www.goodreads.com/author/show/25215.Martin_Fowler"
+                      >
+                        Martin Fowler
+                      </a>
+                    </div>
+                    <div className="gr_custom_tags_1769884540">
+                      tagged: currently-reading
                     </div>
                   </div>
                   <div style={{ clear: "both" }} />
@@ -305,7 +354,7 @@ export default function Reading() {
                 </div>
               </div>
               <Script
-                src="https://www.goodreads.com/review/custom_widget/26600451.Hugo's%20bookshelf:%20currently-reading?cover_position=left&cover_size=small&num_books=5&order=a&shelf=currently-reading&show_author=1&show_cover=1&show_rating=1&show_review=1&show_tags=1&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=1&widget_id=1769804290&widget_text_color=000000&widget_title_size=medium&widget_width=medium"
+                src="https://www.goodreads.com/review/custom_widget/26600451.Hugo's%20bookshelf:%20currently-reading?cover_position=left&cover_size=small&num_books=10&order=d&shelf=currently-reading&show_author=1&show_cover=1&show_rating=1&show_review=1&show_tags=1&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=1&widget_id=1769884540&widget_text_color=000000&widget_title_size=medium&widget_width=medium"
                 strategy="lazyOnload"
               />
             </div>
@@ -322,8 +371,10 @@ export default function Reading() {
                   justify-content: center;
                 }
                 .gr_grid_book_container {
+                  float: left;
                   width: 39px;
                   height: 60px;
+                  padding: 0px 0px;
                   overflow: hidden;
                 }
                 .gr_grid_book_container img {
@@ -333,98 +384,38 @@ export default function Reading() {
                 .gr_grid_book_container img:hover {
                   transform: scale(1.1);
                 }
-                #gr_grid_widget_1769804463 h2 a {
+                #gr_grid_widget_1769885210 h2 a {
                   color: #4ade80 !important;
                   text-decoration: none;
                   font-family: monospace;
                   font-size: 14px;
                 }
-                #gr_grid_widget_1769804463 .gr_grid_branding {
+                #gr_grid_widget_1769885210 .gr_grid_branding {
                   color: #22c55e80 !important;
                   font-size: 11px;
                 }
               `,
                 }}
               />
-              <div id="gr_grid_widget_1769804463">
+              <div id="gr_grid_widget_1769885210">
                 <h2 className="text-center mb-4 border-b border-green-900/50 pb-2">
                   <a
                     rel="nofollow"
                     href="https://www.goodreads.com/review/list/26600451-hugo-souza?shelf=read&utm_medium=api&utm_source=grid_widget"
                   >
-                    Books Read
+                    Sorted by Rating (5 Stars)
                   </a>
                 </h2>
                 <div className="gr_grid_container">
                   <div className="gr_grid_book_container">
                     <a
-                      title="Neuromancer"
+                      title="The 7 Habits of Highly Effective People"
                       rel="nofollow"
-                      href="https://www.goodreads.com/book/show/22328.Neuromancer"
+                      href="https://www.goodreads.com/book/show/36072.The_7_Habits_of_Highly_Effective_People"
                     >
                       <img
-                        alt="Neuromancer"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1167348726l/22328._SY75_.jpg"
-                      />
-                    </a>
-                  </div>
-                  <div className="gr_grid_book_container">
-                    <a
-                      title="Burning Chrome"
-                      rel="nofollow"
-                      href="https://www.goodreads.com/book/show/22323.Burning_Chrome"
-                    >
-                      <img
-                        alt="Burning Chrome"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1349075772l/22323._SY75_.jpg"
-                      />
-                    </a>
-                  </div>
-                  <div className="gr_grid_book_container">
-                    <a
-                      title="Mona Lisa Overdrive"
-                      rel="nofollow"
-                      href="https://www.goodreads.com/book/show/154091.Mona_Lisa_Overdrive"
-                    >
-                      <img
-                        alt="Mona Lisa Overdrive"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1374778887l/154091._SY75_.jpg"
-                      />
-                    </a>
-                  </div>
-                  <div className="gr_grid_book_container">
-                    <a
-                      title="Count Zero"
-                      rel="nofollow"
-                      href="https://www.goodreads.com/book/show/22200.Count_Zero"
-                    >
-                      <img
-                        alt="Count Zero"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1769553330l/22200._SX50_.jpg"
-                      />
-                    </a>
-                  </div>
-                  <div className="gr_grid_book_container">
-                    <a
-                      title="Man's Search for Meaning"
-                      rel="nofollow"
-                      href="https://www.goodreads.com/book/show/4069.Man_s_Search_for_Meaning"
-                    >
-                      <img
-                        alt="Man's Search for Meaning"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535419394l/4069._SY75_.jpg"
-                      />
-                    </a>
-                  </div>
-                  <div className="gr_grid_book_container">
-                    <a
-                      title="The Master and Margarita"
-                      rel="nofollow"
-                      href="https://www.goodreads.com/book/show/117833.The_Master_and_Margarita"
-                    >
-                      <img
-                        alt="The Master and Margarita"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327867963l/117833._SY75_.jpg"
+                        alt="The 7 Habits of Highly Effective People"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1421842784l/36072._SY75_.jpg"
                       />
                     </a>
                   </div>
@@ -442,61 +433,13 @@ export default function Reading() {
                   </div>
                   <div className="gr_grid_book_container">
                     <a
-                      title="Things Fall Apart"
+                      title="Full Catastrophe Living"
                       rel="nofollow"
-                      href="https://www.goodreads.com/book/show/37781.Things_Fall_Apart"
+                      href="https://www.goodreads.com/book/show/41016873-full-catastrophe-living"
                     >
                       <img
-                        alt="Things Fall Apart"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1708114013l/37781._SY75_.jpg"
-                      />
-                    </a>
-                  </div>
-                  <div className="gr_grid_book_container">
-                    <a
-                      title="Extreme Ownership"
-                      rel="nofollow"
-                      href="https://www.goodreads.com/book/show/23848190-extreme-ownership"
-                    >
-                      <img
-                        alt="Extreme Ownership"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1427163007l/23848190._SX50_.jpg"
-                      />
-                    </a>
-                  </div>
-                  <div className="gr_grid_book_container">
-                    <a
-                      title="Emotional Intelligence"
-                      rel="nofollow"
-                      href="https://www.goodreads.com/book/show/26329.Emotional_Intelligence"
-                    >
-                      <img
-                        alt="Emotional Intelligence"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388185411l/26329._SY75_.jpg"
-                      />
-                    </a>
-                  </div>
-                  <div className="gr_grid_book_container">
-                    <a
-                      title="Discipline Equals Freedom"
-                      rel="nofollow"
-                      href="https://www.goodreads.com/book/show/34431560-discipline-equals-freedom"
-                    >
-                      <img
-                        alt="Discipline Equals Freedom"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1509111047l/34431560._SX50_.jpg"
-                      />
-                    </a>
-                  </div>
-                  <div className="gr_grid_book_container">
-                    <a
-                      title="Outliers"
-                      rel="nofollow"
-                      href="https://www.goodreads.com/book/show/3228917-outliers"
-                    >
-                      <img
-                        alt="Outliers"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1344266315l/3228917._SX50_.jpg"
+                        alt="Full Catastrophe Living"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1533075280l/41016873._SY75_.jpg"
                       />
                     </a>
                   </div>
@@ -514,13 +457,193 @@ export default function Reading() {
                   </div>
                   <div className="gr_grid_book_container">
                     <a
+                      title="The Origins of Totalitarianism"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/396931.The_Origins_of_Totalitarianism"
+                    >
+                      <img
+                        alt="The Origins of Totalitarianism"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1565095964l/396931._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="Influence: The Psychology of Persuasion"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/56419468-influence"
+                    >
+                      <img
+                        alt="Influence: The Psychology of Persuasion"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1608967434l/56419468._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="The 33 Strategies of War"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/35289.The_33_Strategies_of_War"
+                    >
+                      <img
+                        alt="The 33 Strategies of War"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1388491606l/35289._SX50_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="The Poverty of Historicism"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/61553.The_Poverty_of_Historicism"
+                    >
+                      <img
+                        alt="The Poverty of Historicism"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1700215769l/61553._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="Chaos: Making a New Science"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/64582.Chaos"
+                    >
+                      <img
+                        alt="Chaos: Making a New Science"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327941595l/64582._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="Whoever Fights Monsters"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/79085.Whoever_Fights_Monsters"
+                    >
+                      <img
+                        alt="Whoever Fights Monsters"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1434811915l/79085._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="The Machine That Changed the World"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/93903.The_Machine_That_Changed_the_World_"
+                    >
+                      <img
+                        alt="The Machine That Changed the World"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1387700892l/93903._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
                       title="The Art of War"
                       rel="nofollow"
-                      href="https://www.goodreads.com/book/show/10534.The_Art_of_War"
+                      href="https://www.goodreads.com/book/show/99324.The_Art_of_War"
                     >
                       <img
                         alt="The Art of War"
-                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1630683326l/10534._SY75_.jpg"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1366570851l/99324._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="The Portable Machiavelli"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/99325.The_Portable_Machiavelli"
+                    >
+                      <img
+                        alt="The Portable Machiavelli"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1347444710l/99325._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="The Intelligent Investor"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/106835.The_Intelligent_Investor"
+                    >
+                      <img
+                        alt="The Intelligent Investor"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1409602421l/106835._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="Inside Delta Force"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/115587.Inside_Delta_Force"
+                    >
+                      <img
+                        alt="Inside Delta Force"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320416478l/115587._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="Red Horizons"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/127570.Red_Horizons"
+                    >
+                      <img
+                        alt="Red Horizons"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348690143l/127570._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="An Introduction to Zen Buddhism"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/129377.An_Introduction_to_Zen_Buddhism"
+                    >
+                      <img
+                        alt="An Introduction to Zen Buddhism"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1347365650l/129377._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="Fundamentals of Database Systems"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/161300.Fundamentals_of_Database_Systems"
+                    >
+                      <img
+                        alt="Fundamentals of Database Systems"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1387738082l/161300._SX50_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="The Discourses"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/99328.The_Discourses"
+                    >
+                      <img
+                        alt="The Discourses"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1520802947l/99328._SY75_.jpg"
+                      />
+                    </a>
+                  </div>
+                  <div className="gr_grid_book_container">
+                    <a
+                      title="The Little Book of Common Sense Investing"
+                      rel="nofollow"
+                      href="https://www.goodreads.com/book/show/171127.The_Little_Book_of_Common_Sense_Investing"
+                    >
+                      <img
+                        alt="The Little Book of Common Sense Investing"
+                        src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1347673616l/171127._SX50_.jpg"
                       />
                     </a>
                   </div>
@@ -536,7 +659,7 @@ export default function Reading() {
                 </div>
               </div>
               <Script
-                src="https://www.goodreads.com/review/grid_widget/26600451.Hugo's%20bookshelf:%20read?cover_size=small&hide_link=&hide_title=&num_books=300&order=a&shelf=read&sort=date_added&widget_id=1769804463"
+                src="https://www.goodreads.com/review/grid_widget/26600451.sorted%20by%20my%20rating,%20SOP%20=%205%20stars?cover_size=small&hide_link=&hide_title=&num_books=200&order=d&shelf=read&sort=rating&widget_id=1769885210"
                 strategy="lazyOnload"
               />
             </div>
