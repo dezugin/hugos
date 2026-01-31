@@ -47,7 +47,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black pt-20 md:pt-0">
       {/* Matrix-like background effect */}
       <div className="absolute inset-0 overflow-hidden opacity-20">
         <div
