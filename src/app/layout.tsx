@@ -9,7 +9,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hugo Souza | Full Stack Engineer",
+  title: "Hugo Souza-Almeida | Full Stack Engineer",
   description:
     "Full Stack Engineer specializing in DevOps, Data Engineering, and Web Development. Based in Belo Horizonte, Brazil.",
   keywords: [
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     "nextjs",
     "web scraping",
   ],
-  authors: [{ name: "Hugo Souza" }],
+  authors: [{ name: "Hugo Souza-Almeida" }],
   openGraph: {
-    title: "Hugo Souza | Full Stack Engineer",
+    title: "Hugo Souza-Almeida | Full Stack Engineer",
     description:
       "Full Stack Engineer specializing in DevOps, Data Engineering, and Web Development.",
     type: "website",

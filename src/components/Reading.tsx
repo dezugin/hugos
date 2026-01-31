@@ -531,7 +531,7 @@ export default function Reading() {
                     rel="nofollow"
                     href="https://www.goodreads.com/user/show/26600451-hugo-souza"
                   >
-                    Hugo Souza&apos;s favorite books »
+                    Hugo Souza-Almeida&apos;s favorite books »
                   </a>
                 </div>
               </div>
@@ -701,12 +701,12 @@ export default function Reading() {
           <div className="mt-6 flex justify-center">
             <a
               href="https://www.goodreads.com/review/list/26600451?shelf=read"
-              title="Hugo Souza's book recommendations, liked quotes, book clubs, book lists (read shelf)"
+              title="Hugo Souza-Almeida's book recommendations, liked quotes, book clubs, book lists (read shelf)"
               rel="nofollow"
               className="opacity-80 hover:opacity-100 transition-opacity"
             >
               <img
-                alt="Hugo Souza's book recommendations"
+                alt="Hugo Souza-Almeida's book recommendations"
                 src="https://s.gr-assets.com/images/badge/badge1.jpg"
                 className="rounded"
               />

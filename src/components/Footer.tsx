@@ -136,10 +136,11 @@ export default function Footer() {
           <div className="bg-terminal-dark border border-terminal-green/20 rounded-lg p-4 font-mono text-sm">
             <p className="text-terminal-green/60">
               <span className="text-terminal-green">$</span> echo &quot;©{" "}
-              {currentYear} Hugo Souza. Built with Next.js + Tailwind&quot;
+              {currentYear} Hugo Souza-Almeida. Built with Next.js +
+              Tailwind&quot;
             </p>
             <p className="text-terminal-green/80 mt-1">
-              © {currentYear} Hugo Souza. Built with Next.js + Tailwind
+              © {currentYear} Hugo Souza-Almeida. Built with Next.js + Tailwind
             </p>
             <p className="text-terminal-green/40 mt-2 text-xs">
               <span className="text-terminal-green">$</span> exit 0
