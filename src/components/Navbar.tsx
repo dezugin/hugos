@@ -3,20 +3,28 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Terminal } from "lucide-react";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { type Locale } from "@/i18n/config";
+import { type Dictionary } from "@/i18n/dictionaries";
 
-const navLinks = [
-  { name: "about", href: "#about" },
-  { name: "skills", href: "#skills" },
-  { name: "projects", href: "#code" },
-  { name: "research", href: "#research" },
-  { name: "reading", href: "#reading" },
-  { name: "courses", href: "#courses" },
-  { name: "contact", href: "#contact" },
-];
+interface NavbarProps {
+  locale: Locale;
+  dict: Dictionary;
+}
 
-export default function Navbar() {
+export default function Navbar({ locale, dict }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const navLinks = [
+    { name: dict.nav.about, href: "#about" },
+    { name: dict.nav.skills, href: "#skills" },
+    { name: dict.nav.projects, href: "#code" },
+    { name: dict.nav.research, href: "#research" },
+    { name: dict.nav.reading, href: "#reading" },
+    { name: dict.nav.courses, href: "#courses" },
+    { name: dict.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +45,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link
-            href="/"
+            href={`/${locale}`}
             className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
           >
             <Terminal className="w-5 h-5" />
@@ -56,10 +64,12 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <LanguageSwitcher currentLocale={locale} />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher currentLocale={locale} />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-green-400 hover:text-green-300 transition-colors"

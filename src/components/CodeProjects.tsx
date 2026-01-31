@@ -2,12 +2,21 @@
 
 import { Github, Terminal, Folder, GitBranch } from "lucide-react";
 import Link from "next/link";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-const projects = [
+interface CodeProjectsProps {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const getProjects = (locale: Locale) => [
   {
     title: "Political Attitude Networks Brazil",
     description:
-      "Research project analyzing political attitude networks in Brazil using ResIN methodology. Published research with UTFPR/UNIGOU.",
+      locale === "pt-BR"
+        ? "Projeto de pesquisa analisando redes de atitudes políticas no Brasil usando metodologia ResIN. Pesquisa publicada com UTFPR/UNIGOU."
+        : "Research project analyzing political attitude networks in Brazil using ResIN methodology. Published research with UTFPR/UNIGOU.",
     tags: ["Python", "Network Analysis", "Research", "Data Science"],
     github:
       "https://github.com/dezugin/Political_Attitude_Networks_Brazil_ResIN",
@@ -16,7 +25,9 @@ const projects = [
   {
     title: "Network Effects of Firehosing",
     description:
-      "BSc Thesis at PUC/MG exploring network effects of firehosing disinformation tactics.",
+      locale === "pt-BR"
+        ? "TCC da PUC/MG explorando efeitos de rede das táticas de desinformação firehosing."
+        : "BSc Thesis at PUC/MG exploring network effects of firehosing disinformation tactics.",
     tags: ["Research", "Network Science", "Python", "Thesis"],
     github: "https://github.com/dezugin/tcc",
     type: "research",
@@ -24,7 +35,9 @@ const projects = [
   {
     title: "Udacity Azure DevOps",
     description:
-      "Azure DevOps Nanodegree projects including Terraform, IaC, CI/CD pipelines, and testing.",
+      locale === "pt-BR"
+        ? "Projetos do Nanodegree Azure DevOps incluindo Terraform, IaC, pipelines CI/CD e testes."
+        : "Azure DevOps Nanodegree projects including Terraform, IaC, CI/CD pipelines, and testing.",
     tags: ["Azure", "DevOps", "Terraform", "CI/CD"],
     github: "https://github.com/dezugin/udacity_devops_azure",
     type: "devops",
@@ -32,7 +45,9 @@ const projects = [
   {
     title: "Flask WebApp Azure Pipeline",
     description:
-      "Flask web application with complete Azure CI/CD pipeline implementation.",
+      locale === "pt-BR"
+        ? "Aplicação web Flask com implementação completa de pipeline CI/CD no Azure."
+        : "Flask web application with complete Azure CI/CD pipeline implementation.",
     tags: ["Flask", "Python", "Azure", "Pipeline"],
     github: "https://github.com/dezugin/udacity_devops_pipeline",
     type: "devops",
@@ -40,7 +55,9 @@ const projects = [
   {
     title: "Postgres Sparkify ETL",
     description:
-      "Data engineering project implementing ETL pipeline with PostgreSQL for music streaming analytics.",
+      locale === "pt-BR"
+        ? "Projeto de engenharia de dados implementando pipeline ETL com PostgreSQL para analytics de streaming de música."
+        : "Data engineering project implementing ETL pipeline with PostgreSQL for music streaming analytics.",
     tags: ["PostgreSQL", "Python", "ETL", "Data Engineering"],
     github: "https://github.com/dezugin/UdacityPostgresSparkify",
     type: "data",
@@ -48,7 +65,9 @@ const projects = [
   {
     title: "Cassandra Sparkify",
     description:
-      "NoSQL data modeling project using Apache Cassandra for music streaming data.",
+      locale === "pt-BR"
+        ? "Projeto de modelagem de dados NoSQL usando Apache Cassandra para dados de streaming de música."
+        : "NoSQL data modeling project using Apache Cassandra for music streaming data.",
     tags: ["Cassandra", "NoSQL", "Python", "Data Modeling"],
     github: "https://github.com/dezugin/UdacityCassandraSparkify",
     type: "data",
@@ -56,7 +75,9 @@ const projects = [
   {
     title: "AWS Data Warehouse",
     description:
-      "Cloud data warehousing solution using Amazon Redshift for analytics workloads.",
+      locale === "pt-BR"
+        ? "Solução de data warehousing em nuvem usando Amazon Redshift para workloads analíticos."
+        : "Cloud data warehousing solution using Amazon Redshift for analytics workloads.",
     tags: ["AWS", "Redshift", "Data Warehouse", "SQL"],
     github: "https://github.com/dezugin/UdacityAWSWarehouseSparkify",
     type: "data",
@@ -64,7 +85,9 @@ const projects = [
   {
     title: "Spark Data Lake",
     description:
-      "Big data processing with Apache Spark on AWS for scalable data lake architecture.",
+      locale === "pt-BR"
+        ? "Processamento de big data com Apache Spark na AWS para arquitetura de data lake escalável."
+        : "Big data processing with Apache Spark on AWS for scalable data lake architecture.",
     tags: ["Spark", "AWS", "Data Lake", "Python"],
     github: "https://github.com/dezugin/UdacityAWSDataLake",
     type: "data",
@@ -72,7 +95,9 @@ const projects = [
   {
     title: "Airflow Data Pipeline",
     description:
-      "Orchestrated data pipelines using Apache Airflow for automated ETL workflows.",
+      locale === "pt-BR"
+        ? "Pipelines de dados orquestrados usando Apache Airflow para workflows ETL automatizados."
+        : "Orchestrated data pipelines using Apache Airflow for automated ETL workflows.",
     tags: ["Airflow", "ETL", "Python", "Orchestration"],
     github: "https://github.com/dezugin/UdacitySparkifyAirFlow",
     type: "data",
@@ -85,13 +110,16 @@ const typeColors: Record<string, string> = {
   data: "text-cyan-400 border-cyan-500/50",
 };
 
-const typeLabels: Record<string, string> = {
-  research: "research",
+const getTypeLabels = (locale: Locale): Record<string, string> => ({
+  research: locale === "pt-BR" ? "pesquisa" : "research",
   devops: "devops",
-  data: "data-eng",
-};
+  data: locale === "pt-BR" ? "eng-dados" : "data-eng",
+});
 
-export default function CodeProjects() {
+export default function CodeProjects({ locale, dict }: CodeProjectsProps) {
+  const projects = getProjects(locale);
+  const typeLabels = getTypeLabels(locale);
+
   return (
     <section id="code" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,7 +128,7 @@ export default function CodeProjects() {
           <div className="flex items-center gap-3 mb-4">
             <Terminal className="w-6 h-6 text-green-500" />
             <h2 className="text-2xl md:text-3xl font-mono font-bold text-green-400">
-              <span className="text-green-600">$</span> find ~/projects -type d
+              <span className="text-green-600">$</span> {dict.projects.command}
             </h2>
           </div>
           <div className="h-px bg-gradient-to-r from-green-500/50 to-transparent" />
@@ -167,7 +195,9 @@ export default function CodeProjects() {
             <GitBranch className="w-4 h-4 text-green-600 group-hover:text-green-400" />
           </Link>
           <p className="text-green-600/60 text-sm mt-3 font-mono">
-            32+ repositories • Arctic Code Vault Contributor
+            {locale === "pt-BR"
+              ? "32+ repositórios • Arctic Code Vault Contributor"
+              : "32+ repositories • Arctic Code Vault Contributor"}
           </p>
         </div>
       </div>

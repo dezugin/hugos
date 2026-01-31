@@ -1,27 +1,6 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Skills from "@/components/Skills";
-import CodeProjects from "@/components/CodeProjects";
-import Research from "@/components/Research";
-import Reading from "@/components/Reading";
-import Courses from "@/components/Courses";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import { redirect } from "next/navigation";
+import { defaultLocale } from "@/i18n/config";
 
 export default function Home() {
-  return (
-    <main className="min-h-screen">
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <CodeProjects />
-      <Research />
-      <Courses />
-      <Reading />
-      <Contact />
-      <Footer />
-    </main>
-  );
+  redirect(`/${defaultLocale}`);
 }

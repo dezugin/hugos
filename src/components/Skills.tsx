@@ -1,6 +1,13 @@
 "use client";
 
 import { Terminal, Cloud, Database, Server, Code2, Wrench } from "lucide-react";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
+
+interface SkillsProps {
+  locale: Locale;
+  dict: Dictionary;
+}
 
 const skills = {
   "DevOps & Cloud": {
@@ -57,14 +64,51 @@ const skills = {
   },
 };
 
-const languages = [
-  { name: "Portuguese", level: "Native", percentage: 100, flag: "🇧🇷" },
-  { name: "English", level: "Fluent", percentage: 95, flag: "🇺🇸" },
-  { name: "Spanish", level: "Intermediate", percentage: 60, flag: "🇪🇸" },
-  { name: "Russian", level: "Intermediate", percentage: 50, flag: "🇷🇺" },
+const skillsCategoryTranslations: Record<
+  string,
+  { en: string; "pt-BR": string }
+> = {
+  "DevOps & Cloud": { en: "DevOps & Cloud", "pt-BR": "DevOps & Cloud" },
+  "Data Engineering": {
+    en: "Data Engineering",
+    "pt-BR": "Engenharia de Dados",
+  },
+  "Backend & APIs": { en: "Backend & APIs", "pt-BR": "Backend & APIs" },
+  Frontend: { en: "Frontend", "pt-BR": "Frontend" },
+  "Tools & Testing": { en: "Tools & Testing", "pt-BR": "Ferramentas & Testes" },
+  "Web Scraping": { en: "Web Scraping", "pt-BR": "Web Scraping" },
+};
+
+const getLanguages = (locale: Locale) => [
+  {
+    name: locale === "pt-BR" ? "Português" : "Portuguese",
+    level: locale === "pt-BR" ? "Nativo" : "Native",
+    percentage: 100,
+    flag: "🇧🇷",
+  },
+  {
+    name: locale === "pt-BR" ? "Inglês" : "English",
+    level: locale === "pt-BR" ? "Fluente" : "Fluent",
+    percentage: 95,
+    flag: "🇺🇸",
+  },
+  {
+    name: locale === "pt-BR" ? "Espanhol" : "Spanish",
+    level: locale === "pt-BR" ? "Intermediário" : "Intermediate",
+    percentage: 60,
+    flag: "🇪🇸",
+  },
+  {
+    name: locale === "pt-BR" ? "Russo" : "Russian",
+    level: locale === "pt-BR" ? "Intermediário" : "Intermediate",
+    percentage: 50,
+    flag: "🇷🇺",
+  },
 ];
 
-export default function Skills() {
+export default function Skills({ locale, dict }: SkillsProps) {
+  const languages = getLanguages(locale);
+
   return (
     <section id="skills" className="py-20 bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,7 +117,7 @@ export default function Skills() {
           <div className="flex items-center gap-3 mb-4">
             <Terminal className="w-6 h-6 text-green-500" />
             <h2 className="text-2xl md:text-3xl font-mono font-bold text-green-400">
-              <span className="text-green-600">$</span> ls -la skills/
+              <span className="text-green-600">$</span> {dict.skills.command}
             </h2>
           </div>
           <div className="h-px bg-gradient-to-r from-green-500/50 to-transparent" />
@@ -91,7 +135,7 @@ export default function Skills() {
                   <Icon className="w-5 h-5 text-green-500" />
                 </div>
                 <h4 className="font-mono text-green-400 font-semibold">
-                  {category}
+                  {skillsCategoryTranslations[category]?.[locale] || category}
                 </h4>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -112,7 +156,8 @@ export default function Skills() {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
             <h3 className="text-xl font-mono text-green-400">
-              <span className="text-green-600">{">"}</span> languages --spoken
+              <span className="text-green-600">{">"}</span>{" "}
+              {locale === "pt-BR" ? "idiomas --falados" : "languages --spoken"}
             </h3>
           </div>
 

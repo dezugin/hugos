@@ -11,12 +11,25 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { type Locale } from "@/i18n/config";
+import { type Dictionary } from "@/i18n/dictionaries";
 
-const terminalLines = [
+interface HeroProps {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const getTerminalLines = (locale: Locale) => [
   { type: "command", text: "whoami" },
   { type: "output", text: "hugo_souza_almeida" },
   { type: "command", text: "cat role.txt" },
-  { type: "output", text: "Full Stack Developer @ RHI Magnesita" },
+  {
+    type: "output",
+    text:
+      locale === "pt-BR"
+        ? "Desenvolvedor Full Stack @ RHI Magnesita"
+        : "Full Stack Developer @ RHI Magnesita",
+  },
   { type: "command", text: "cat stack.txt" },
   {
     type: "output",
@@ -24,17 +37,27 @@ const terminalLines = [
   },
   { type: "command", text: "cat location.txt" },
   { type: "output", text: "Belo Horizonte, Brazil 🇧🇷" },
-  { type: "command", text: "cat translator.txt" },
+  {
+    type: "command",
+    text: locale === "pt-BR" ? "cat tradutor.txt" : "cat translator.txt",
+  },
   {
     type: "output",
     text: "🌐 Tradutor Juramentado (Sworn Translator)",
     link: true,
   },
-  { type: "output", text: "   Portuguese <-> English" },
+  {
+    type: "output",
+    text:
+      locale === "pt-BR"
+        ? "   Português <-> Inglês"
+        : "   Portuguese <-> English",
+  },
 ];
 
-export default function Hero() {
+export default function Hero({ locale, dict }: HeroProps) {
   const [displayedLines, setDisplayedLines] = useState<number>(0);
+  const terminalLines = getTerminalLines(locale);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -44,7 +67,7 @@ export default function Hero() {
       });
     }, 400);
     return () => clearInterval(timer);
-  }, []);
+  }, [terminalLines.length]);
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black pt-20 md:pt-0">
@@ -127,17 +150,29 @@ export default function Hero() {
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
             <div className="text-green-600 text-xs mb-1">{"// stack"}</div>
             <div className="text-green-400 font-bold">Full Stack</div>
-            <div className="text-green-600/60 text-sm">Frontend to Cloud</div>
+            <div className="text-green-600/60 text-sm">
+              {locale === "pt-BR" ? "Frontend ao Cloud" : "Frontend to Cloud"}
+            </div>
           </div>
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-            <div className="text-green-600 text-xs mb-1">{"// experience"}</div>
-            <div className="text-green-400 font-bold">3-5 Years</div>
-            <div className="text-green-600/60 text-sm">in Engineering</div>
+            <div className="text-green-600 text-xs mb-1">
+              {locale === "pt-BR" ? "// experiência" : "// experience"}
+            </div>
+            <div className="text-green-400 font-bold">
+              {locale === "pt-BR" ? "3-5 Anos" : "3-5 Years"}
+            </div>
+            <div className="text-green-600/60 text-sm">
+              {locale === "pt-BR" ? "em Engenharia" : "in Engineering"}
+            </div>
           </div>
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-            <div className="text-green-600 text-xs mb-1">{"// education"}</div>
+            <div className="text-green-600 text-xs mb-1">
+              {locale === "pt-BR" ? "// formação" : "// education"}
+            </div>
             <div className="text-green-400 font-bold">CS + InfoSec</div>
-            <div className="text-green-600/60 text-sm">BSc + Postgrad</div>
+            <div className="text-green-600/60 text-sm">
+              {locale === "pt-BR" ? "Grad + Pós-Grad" : "BSc + Postgrad"}
+            </div>
           </div>
         </div>
 
@@ -166,7 +201,7 @@ export default function Hero() {
               }
             }}
             className="p-3 bg-gray-950 border border-yellow-900/50 rounded-lg hover:border-yellow-500 hover:shadow-[0_0_15px_rgba(234,179,8,0.3)] transition-all group cursor-pointer"
-            title="Translation Services"
+            title={dict.translation.title}
           >
             <Globe className="w-5 h-5 text-yellow-500 group-hover:text-yellow-400" />
           </button>

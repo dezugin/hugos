@@ -3,8 +3,15 @@
 
 import Link from "next/link";
 import { Github, Linkedin, Mail, Terminal } from "lucide-react";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export default function Footer() {
+interface FooterProps {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+export default function Footer({ locale, dict }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -14,7 +21,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link
-              href="/"
+              href={`/${locale}`}
               className="flex items-center gap-2 terminal-text text-lg font-bold"
             >
               <Terminal className="w-5 h-5 text-terminal-green" />
@@ -23,15 +30,17 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-terminal-green/50 text-sm font-mono">
-              Full Stack Engineer specializing in DevOps, Data Engineering, and
-              Cloud Infrastructure.
+              {locale === "pt-BR"
+                ? "Engenheiro Full Stack especializado em DevOps, Engenharia de Dados e Infraestrutura Cloud."
+                : "Full Stack Engineer specializing in DevOps, Data Engineering, and Cloud Infrastructure."}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
             <h4 className="terminal-text font-semibold mb-4 text-sm">
-              <span className="text-terminal-green/60">~/</span>navigation
+              <span className="text-terminal-green/60">~/</span>
+              {locale === "pt-BR" ? "navegacao" : "navigation"}
             </h4>
             <ul className="space-y-2 text-terminal-green/60 text-sm font-mono">
               <li>
@@ -39,7 +48,7 @@ export default function Footer() {
                   href="#about"
                   className="hover:text-terminal-green transition-colors"
                 >
-                  ./about
+                  ./{dict.nav.about}
                 </Link>
               </li>
               <li>
@@ -47,7 +56,7 @@ export default function Footer() {
                   href="#skills"
                   className="hover:text-terminal-green transition-colors"
                 >
-                  ./skills
+                  ./{dict.nav.skills}
                 </Link>
               </li>
               <li>
@@ -55,7 +64,7 @@ export default function Footer() {
                   href="#code"
                   className="hover:text-terminal-green transition-colors"
                 >
-                  ./projects
+                  ./{dict.nav.projects}
                 </Link>
               </li>
               <li>
@@ -63,7 +72,7 @@ export default function Footer() {
                   href="#research"
                   className="hover:text-terminal-green transition-colors"
                 >
-                  ./research
+                  ./{dict.nav.research}
                 </Link>
               </li>
             </ul>
@@ -72,7 +81,8 @@ export default function Footer() {
           {/* More Links */}
           <div>
             <h4 className="terminal-text font-semibold mb-4 text-sm">
-              <span className="text-terminal-green/60">~/</span>more
+              <span className="text-terminal-green/60">~/</span>
+              {locale === "pt-BR" ? "mais" : "more"}
             </h4>
             <ul className="space-y-2 text-terminal-green/60 text-sm font-mono">
               <li>
@@ -80,7 +90,7 @@ export default function Footer() {
                   href="#reading"
                   className="hover:text-terminal-green transition-colors"
                 >
-                  ./reading
+                  ./{dict.nav.reading}
                 </Link>
               </li>
               <li>
@@ -88,7 +98,7 @@ export default function Footer() {
                   href="#courses"
                   className="hover:text-terminal-green transition-colors"
                 >
-                  ./courses
+                  ./{dict.nav.courses}
                 </Link>
               </li>
               <li>
@@ -96,7 +106,7 @@ export default function Footer() {
                   href="#contact"
                   className="hover:text-terminal-green transition-colors"
                 >
-                  ./contact
+                  ./{dict.nav.contact}
                 </Link>
               </li>
             </ul>
@@ -105,7 +115,8 @@ export default function Footer() {
           {/* Connect */}
           <div>
             <h4 className="terminal-text font-semibold mb-4 text-sm">
-              <span className="text-terminal-green/60">~/</span>connect
+              <span className="text-terminal-green/60">~/</span>
+              {dict.footer.connect}
             </h4>
             <div className="flex gap-3">
               <Link
@@ -136,11 +147,10 @@ export default function Footer() {
           <div className="bg-terminal-dark border border-terminal-green/20 rounded-lg p-4 font-mono text-sm">
             <p className="text-terminal-green/60">
               <span className="text-terminal-green">$</span> echo &quot;©{" "}
-              {currentYear} Hugo Souza-Almeida. Built with Next.js +
-              Tailwind&quot;
+              {currentYear} Hugo Souza-Almeida. {dict.footer.built_with}&quot;
             </p>
             <p className="text-terminal-green/80 mt-1">
-              © {currentYear} Hugo Souza-Almeida. Built with Next.js + Tailwind
+              © {currentYear} Hugo Souza-Almeida. {dict.footer.built_with}
             </p>
             <p className="text-terminal-green/40 mt-2 text-xs">
               <span className="text-terminal-green">$</span> exit 0
@@ -163,15 +173,16 @@ export default function Footer() {
               />
             </a>
             <p className="text-terminal-green/40 text-xs mt-2 font-mono">
-              This work is licensed under a{" "}
+              {dict.footer.license}{" "}
               <a
                 rel="license"
                 href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
                 target="_blank"
                 className="text-terminal-green/60 hover:text-terminal-green transition-colors underline"
               >
-                Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-                International License
+                {locale === "pt-BR"
+                  ? "Licença Creative Commons Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional"
+                  : "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"}
               </a>
             </p>
           </div>

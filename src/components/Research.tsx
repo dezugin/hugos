@@ -9,20 +9,32 @@ import {
   Download,
 } from "lucide-react";
 import Link from "next/link";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-const publications = [
+interface ResearchProps {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const getPublications = (locale: Locale) => [
   {
     title: "Political Attitude Networks in Brazil using ResIN",
     authors: "Hugo Souza-Almeida",
     institution: "UTFPR / UNIGOU",
     year: 2025,
     description:
-      "Research analyzing political attitude networks in Brazil using the ResIN methodology, exploring polarization patterns and network dynamics in Brazilian politics.",
+      locale === "pt-BR"
+        ? "Pesquisa analisando redes de atitudes políticas no Brasil usando a metodologia ResIN, explorando padrões de polarização e dinâmicas de rede na política brasileira."
+        : "Research analyzing political attitude networks in Brazil using the ResIN methodology, exploring polarization patterns and network dynamics in Brazilian politics.",
     github:
       "https://github.com/dezugin/Political_Attitude_Networks_Brazil_ResIN",
     pdf: "/papers/political-attitude-networks-brazil-resin-2025.pdf",
-    type: "international",
-    tags: ["Network Science", "Political Science", "Data Analysis"],
+    type: locale === "pt-BR" ? "internacional" : "international",
+    tags:
+      locale === "pt-BR"
+        ? ["Ciência de Redes", "Ciência Política", "Análise de Dados"]
+        : ["Network Science", "Political Science", "Data Analysis"],
   },
   {
     title: "Network Effects of Firehosing",
@@ -30,15 +42,22 @@ const publications = [
     institution: "PUC Minas",
     year: 2023,
     description:
-      "Bachelor's thesis exploring the network effects of firehosing disinformation tactics and their propagation patterns in social networks.",
+      locale === "pt-BR"
+        ? "Trabalho de conclusão de curso explorando os efeitos de rede das táticas de desinformação firehosing e seus padrões de propagação em redes sociais."
+        : "Bachelor's thesis exploring the network effects of firehosing disinformation tactics and their propagation patterns in social networks.",
     github: "https://github.com/dezugin/tcc",
     pdf: "/papers/network-effects-firehosing-thesis-2023.pdf",
-    type: "thesis",
-    tags: ["Disinformation", "Network Analysis", "Social Media"],
+    type: locale === "pt-BR" ? "tcc" : "thesis",
+    tags:
+      locale === "pt-BR"
+        ? ["Desinformação", "Análise de Redes", "Mídias Sociais"]
+        : ["Disinformation", "Network Analysis", "Social Media"],
   },
 ];
 
-export default function Research() {
+export default function Research({ locale, dict }: ResearchProps) {
+  const publications = getPublications(locale);
+
   return (
     <section id="research" className="py-20 bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,7 +66,7 @@ export default function Research() {
           <div className="flex items-center gap-3 mb-4">
             <Terminal className="w-6 h-6 text-green-500" />
             <h2 className="text-2xl md:text-3xl font-mono font-bold text-green-400">
-              <span className="text-green-600">$</span> cat research/*.md
+              <span className="text-green-600">$</span> {dict.research.command}
             </h2>
           </div>
           <div className="h-px bg-gradient-to-r from-green-500/50 to-transparent" />
@@ -58,12 +77,16 @@ export default function Research() {
           <div className="bg-black border border-green-900/50 rounded-lg p-4 text-center hover:border-green-500/50 transition-all">
             <FileText className="w-6 h-6 text-green-500 mx-auto mb-2" />
             <div className="text-2xl font-bold text-green-400 font-mono">2</div>
-            <div className="text-xs text-green-600">Publications</div>
+            <div className="text-xs text-green-600">
+              {locale === "pt-BR" ? "Publicações" : "Publications"}
+            </div>
           </div>
           <div className="bg-black border border-green-900/50 rounded-lg p-4 text-center hover:border-green-500/50 transition-all">
             <GraduationCap className="w-6 h-6 text-green-500 mx-auto mb-2" />
             <div className="text-2xl font-bold text-green-400 font-mono">1</div>
-            <div className="text-xs text-green-600">BSc Thesis</div>
+            <div className="text-xs text-green-600">
+              {locale === "pt-BR" ? "TCC" : "BSc Thesis"}
+            </div>
           </div>
           <div className="bg-black border border-green-900/50 rounded-lg p-4 text-center hover:border-green-500/50 transition-all">
             <Github className="w-6 h-6 text-green-500 mx-auto mb-2" />
@@ -73,7 +96,9 @@ export default function Research() {
           <div className="bg-black border border-green-900/50 rounded-lg p-4 text-center hover:border-green-500/50 transition-all">
             <ExternalLink className="w-6 h-6 text-green-500 mx-auto mb-2" />
             <div className="text-2xl font-bold text-green-400 font-mono">1</div>
-            <div className="text-xs text-green-600">International</div>
+            <div className="text-xs text-green-600">
+              {locale === "pt-BR" ? "Internacional" : "International"}
+            </div>
           </div>
         </div>
 
@@ -140,7 +165,7 @@ export default function Research() {
                       className="inline-flex items-center gap-2 text-sm text-green-400 hover:text-green-300 transition-colors font-mono"
                     >
                       <Github className="w-4 h-4" />
-                      View on GitHub
+                      {locale === "pt-BR" ? "Ver no GitHub" : "View on GitHub"}
                       <ExternalLink className="w-3 h-3" />
                     </Link>
                     <a
@@ -149,7 +174,7 @@ export default function Research() {
                       className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors font-mono"
                     >
                       <Download className="w-4 h-4" />
-                      Download PDF
+                      {locale === "pt-BR" ? "Baixar PDF" : "Download PDF"}
                     </a>
                   </div>
                 </div>

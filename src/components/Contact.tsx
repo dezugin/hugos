@@ -12,10 +12,20 @@ import {
   Languages,
 } from "lucide-react";
 import Link from "next/link";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-const contactEmails = [
+interface ContactProps {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const getContactEmails = (locale: Locale) => [
   {
-    type: "Programming & Development",
+    type:
+      locale === "pt-BR"
+        ? "Programação & Desenvolvimento"
+        : "Programming & Development",
     email: "code@hugos.com.br",
     icon: Code2,
     color: "text-green-400",
@@ -23,7 +33,7 @@ const contactEmails = [
     borderColor: "border-green-500/30",
   },
   {
-    type: "Research & Academia",
+    type: locale === "pt-BR" ? "Pesquisa & Academia" : "Research & Academia",
     email: "research@hugos.com.br",
     icon: BookOpen,
     color: "text-blue-400",
@@ -31,7 +41,7 @@ const contactEmails = [
     borderColor: "border-blue-500/30",
   },
   {
-    type: "Translation Services",
+    type: locale === "pt-BR" ? "Serviços de Tradução" : "Translation Services",
     email: "translate@hugos.com.br",
     icon: Languages,
     color: "text-yellow-400",
@@ -49,7 +59,8 @@ const getAccessKeyForSubject = (subject: string): string => {
   return process.env.NEXT_PUBLIC_WEB3FORMS_KEY_GENERAL || "";
 };
 
-export default function Contact() {
+export default function Contact({ locale, dict }: ContactProps) {
+  const contactEmails = getContactEmails(locale);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -141,16 +152,15 @@ export default function Contact() {
         <div className="mb-16">
           <div className="inline-block px-4 py-2 bg-terminal-green/10 border border-terminal-green/30 rounded mb-4">
             <span className="terminal-text text-sm">
-              <span className="text-terminal-green/60">$</span> ./contact --init
+              <span className="text-terminal-green/60">$</span>{" "}
+              {dict.contact.command}
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold terminal-text mb-4">
-            Get in Touch
+            {dict.contact.title}
           </h2>
           <p className="text-terminal-green/60 max-w-2xl">
-            {
-              "// Open for opportunities, collaborations, and interesting projects"
-            }
+            {`// ${dict.contact.subtitle}`}
           </p>
         </div>
 
@@ -166,7 +176,7 @@ export default function Contact() {
                   <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                 </div>
                 <span className="text-terminal-green/50 text-xs ml-2">
-                  contact_info.sh
+                  {dict.contact.contact_info}
                 </span>
               </div>
               <div className="p-6 font-mono text-sm space-y-4">
@@ -179,7 +189,7 @@ export default function Contact() {
                     <p className="text-terminal-green/80">{"{"}</p>
                     <p className="text-terminal-green/80 pl-4">
                       <span className="text-cyan-400">
-                        &quot;location&quot;
+                        &quot;{dict.contact.location_label.toLowerCase()}&quot;
                       </span>
                       :{" "}
                       <span className="text-yellow-400">
@@ -189,7 +199,7 @@ export default function Contact() {
                     </p>
                     <p className="text-terminal-green/80 pl-4">
                       <span className="text-cyan-400">
-                        &quot;timezone&quot;
+                        &quot;{dict.contact.timezone_label.toLowerCase()}&quot;
                       </span>
                       :{" "}
                       <span className="text-yellow-400">
@@ -199,18 +209,26 @@ export default function Contact() {
                     </p>
                     <p className="text-terminal-green/80 pl-4">
                       <span className="text-cyan-400">
-                        &quot;availability&quot;
+                        &quot;{dict.contact.availability_label.toLowerCase()}
+                        &quot;
                       </span>
-                      : <span className="text-green-400">&quot;open&quot;</span>
+                      :{" "}
+                      <span className="text-green-400">
+                        &quot;{dict.contact.availability_value}&quot;
+                      </span>
                       ,
                     </p>
                     <p className="text-terminal-green/80 pl-4">
                       <span className="text-cyan-400">
-                        &quot;response_time&quot;
+                        &quot;
+                        {dict.contact.response_time_label
+                          .toLowerCase()
+                          .replace(/ /g, "_")}
+                        &quot;
                       </span>
                       :{" "}
                       <span className="text-yellow-400">
-                        &quot;24-48h&quot;
+                        &quot;{dict.contact.response_time_value}&quot;
                       </span>
                     </p>
                     <p className="text-terminal-green/80">{"}"}</p>
@@ -258,8 +276,12 @@ export default function Contact() {
                 <MapPin className="w-5 h-5 text-terminal-green" />
               </div>
               <div>
-                <p className="text-terminal-green/50 text-xs">Location</p>
-                <p className="terminal-text">Belo Horizonte, MG, Brazil</p>
+                <p className="text-terminal-green/50 text-xs">
+                  {dict.contact.location_label}
+                </p>
+                <p className="terminal-text">
+                  Belo Horizonte, MG, {locale === "pt-BR" ? "Brasil" : "Brazil"}
+                </p>
               </div>
             </div>
 
@@ -295,10 +317,10 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="terminal-text text-sm font-semibold">
-                    Open for Opportunities
+                    {dict.contact.status_open}
                   </p>
                   <p className="text-terminal-green/60 text-xs">
-                    Interested in DevOps, Data Engineering, and Full Stack roles
+                    {dict.contact.status_desc}
                   </p>
                 </div>
               </div>
@@ -310,7 +332,7 @@ export default function Contact() {
             <div className="flex items-center gap-2 px-4 py-3 bg-terminal-green/10 border-b border-terminal-green/20">
               <Terminal className="w-4 h-4 text-terminal-green/60" />
               <span className="text-terminal-green/50 text-xs">
-                send_message.sh
+                {dict.contact.form_title}
               </span>
             </div>
 
@@ -321,16 +343,16 @@ export default function Contact() {
                     <Send className="w-8 h-8 text-terminal-green" />
                   </div>
                   <h3 className="text-xl font-bold terminal-text mb-2">
-                    Message Sent!
+                    {dict.contact.form_success_title}
                   </h3>
                   <p className="text-terminal-green/60 mb-4 font-mono text-sm">
-                    {">"} echo &quot;Thanks! I&apos;ll respond soon.&quot;
+                    {">"} echo &quot;{dict.contact.form_success_message}&quot;
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
                     className="terminal-text hover:text-terminal-green transition-colors text-sm"
                   >
-                    [Send another message]
+                    [{dict.contact.form_another}]
                   </button>
                 </div>
               ) : (
@@ -346,7 +368,8 @@ export default function Contact() {
                         htmlFor="name"
                         className="block text-sm font-mono text-terminal-green/70 mb-2"
                       >
-                        <span className="text-terminal-green/50">$</span> name:
+                        <span className="text-terminal-green/50">$</span>{" "}
+                        {dict.contact.form_name}:
                       </label>
                       <input
                         type="text"
@@ -356,7 +379,9 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg border border-terminal-green/30 bg-terminal-dark text-terminal-green focus:ring-1 focus:ring-terminal-green focus:border-terminal-green transition-all font-mono text-sm placeholder:text-terminal-green/30"
-                        placeholder="your_name"
+                        placeholder={
+                          locale === "pt-BR" ? "seu_nome" : "your_name"
+                        }
                       />
                     </div>
                     <div>
@@ -364,7 +389,8 @@ export default function Contact() {
                         htmlFor="email"
                         className="block text-sm font-mono text-terminal-green/70 mb-2"
                       >
-                        <span className="text-terminal-green/50">$</span> email:
+                        <span className="text-terminal-green/50">$</span>{" "}
+                        {dict.contact.form_email}:
                       </label>
                       <input
                         type="email"
@@ -374,7 +400,11 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg border border-terminal-green/30 bg-terminal-dark text-terminal-green focus:ring-1 focus:ring-terminal-green focus:border-terminal-green transition-all font-mono text-sm placeholder:text-terminal-green/30"
-                        placeholder="your@email.com"
+                        placeholder={
+                          locale === "pt-BR"
+                            ? "seu@email.com"
+                            : "your@email.com"
+                        }
                       />
                     </div>
                   </div>
@@ -383,7 +413,8 @@ export default function Contact() {
                       htmlFor="subject"
                       className="block text-sm font-mono text-terminal-green/70 mb-2"
                     >
-                      <span className="text-terminal-green/50">$</span> subject:
+                      <span className="text-terminal-green/50">$</span>{" "}
+                      {dict.contact.form_subject}:
                     </label>
                     <select
                       id="subject"
@@ -394,25 +425,25 @@ export default function Contact() {
                       className="w-full px-4 py-3 rounded-lg border border-terminal-green/30 bg-terminal-dark text-terminal-green focus:ring-1 focus:ring-terminal-green focus:border-terminal-green transition-all font-mono text-sm"
                     >
                       <option value="" className="bg-terminal-dark">
-                        --select--
+                        {dict.contact.form_select}
                       </option>
                       <option value="development" className="bg-terminal-dark">
-                        Development / Full Stack
+                        {dict.contact.form_subject_dev}
                       </option>
                       <option value="opportunity" className="bg-terminal-dark">
-                        Job Opportunity
+                        {dict.contact.form_subject_job}
                       </option>
                       <option value="research" className="bg-terminal-dark">
-                        Research Collaboration
+                        {dict.contact.form_subject_research}
                       </option>
                       <option value="translation" className="bg-terminal-dark">
-                        Translation Services
+                        {dict.contact.form_subject_translation}
                       </option>
                       <option value="consulting" className="bg-terminal-dark">
-                        Consulting
+                        {dict.contact.form_subject_consulting}
                       </option>
                       <option value="other" className="bg-terminal-dark">
-                        Other
+                        {dict.contact.form_subject_other}
                       </option>
                     </select>
                   </div>
@@ -421,7 +452,8 @@ export default function Contact() {
                       htmlFor="message"
                       className="block text-sm font-mono text-terminal-green/70 mb-2"
                     >
-                      <span className="text-terminal-green/50">$</span> message:
+                      <span className="text-terminal-green/50">$</span>{" "}
+                      {dict.contact.form_message}:
                     </label>
                     <textarea
                       id="message"
@@ -431,7 +463,11 @@ export default function Contact() {
                       required
                       rows={5}
                       className="w-full px-4 py-3 rounded-lg border border-terminal-green/30 bg-terminal-dark text-terminal-green focus:ring-1 focus:ring-terminal-green focus:border-terminal-green transition-all resize-none font-mono text-sm placeholder:text-terminal-green/30"
-                      placeholder="// Write your message here..."
+                      placeholder={
+                        locale === "pt-BR"
+                          ? "// Escreva sua mensagem aqui..."
+                          : "// Write your message here..."
+                      }
                     />
                   </div>
                   <button
@@ -442,12 +478,12 @@ export default function Contact() {
                     {isSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-terminal-green border-t-transparent rounded-full animate-spin" />
-                        sending...
+                        {dict.contact.form_sending}
                       </>
                     ) : (
                       <>
                         <Send className="w-4 h-4" />
-                        ./send_message
+                        {dict.contact.form_submit}
                       </>
                     )}
                   </button>

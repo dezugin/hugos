@@ -18,37 +18,67 @@ import {
   BookOpen,
 } from "lucide-react";
 import Link from "next/link";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-const postgraduate = [
+interface CoursesProps {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const getPostgraduate = (locale: Locale) => [
   {
-    title: "Information Security",
-    institution: "UTFPR - Federal Technological University of Paraná",
+    title:
+      locale === "pt-BR" ? "Segurança da Informação" : "Information Security",
+    institution:
+      locale === "pt-BR"
+        ? "UTFPR - Universidade Tecnológica Federal do Paraná"
+        : "UTFPR - Federal Technological University of Paraná",
     icon: Shield,
     date: "2024",
-    type: "Postgraduate Specialization",
-    skills: [
-      "Cybersecurity",
-      "Network Security",
-      "Cryptography",
-      "Risk Management",
-    ],
+    type: locale === "pt-BR" ? "Pós-Graduação" : "Postgraduate Specialization",
+    skills:
+      locale === "pt-BR"
+        ? [
+            "Cibersegurança",
+            "Segurança de Redes",
+            "Criptografia",
+            "Gestão de Riscos",
+          ]
+        : [
+            "Cybersecurity",
+            "Network Security",
+            "Cryptography",
+            "Risk Management",
+          ],
   },
   {
-    title: "Computer Forensics",
+    title:
+      locale === "pt-BR"
+        ? "Perícia Forense Computacional"
+        : "Computer Forensics",
     institution: "IPOG - Instituto de Pós-Graduação",
     icon: Search,
     date: "2025",
-    type: "Postgraduate Specialization",
-    skills: [
-      "Digital Evidence",
-      "Forensic Analysis",
-      "Incident Response",
-      "Legal",
-    ],
+    type: locale === "pt-BR" ? "Pós-Graduação" : "Postgraduate Specialization",
+    skills:
+      locale === "pt-BR"
+        ? [
+            "Evidência Digital",
+            "Análise Forense",
+            "Resposta a Incidentes",
+            "Legal",
+          ]
+        : [
+            "Digital Evidence",
+            "Forensic Analysis",
+            "Incident Response",
+            "Legal",
+          ],
   },
 ];
 
-const nanodegrees = [
+const getNanodegrees = (locale: Locale) => [
   {
     title: "Cloud DevOps using Microsoft Azure",
     provider: "Udacity Nanodegree",
@@ -65,7 +95,9 @@ const nanodegrees = [
       "Locust",
     ],
     description:
-      "Infrastructure as Code, performance testing, and automated deployments",
+      locale === "pt-BR"
+        ? "Infrastructure as Code, testes de performance e deploys automatizados"
+        : "Infrastructure as Code, performance testing, and automated deployments",
   },
   {
     title: "Data Engineering",
@@ -74,7 +106,10 @@ const nanodegrees = [
     date: "2021-2022",
     link: "https://www.udacity.com/course/data-engineer-nanodegree--nd027",
     skills: ["PostgreSQL", "Cassandra", "Spark", "Airflow", "Redshift", "S3"],
-    description: "Data modeling, data lakes, pipelines with Spark and Airflow",
+    description:
+      locale === "pt-BR"
+        ? "Modelagem de dados, data lakes, pipelines com Spark e Airflow"
+        : "Data modeling, data lakes, pipelines with Spark and Airflow",
   },
 ];
 
@@ -207,7 +242,7 @@ const courses = [
   },
 ];
 
-const certifications = [
+const getCertifications = (locale: Locale) => [
   {
     title: "OutSystems Associate Developer Certificate (ODC)",
     issuer: "OutSystems",
@@ -216,15 +251,25 @@ const certifications = [
     skills: ["Low-Code", "OutSystems", "ODC", "Cloud-Native"],
   },
   {
-    title: "Certificate of Proficiency in English (CPE)",
+    title:
+      locale === "pt-BR"
+        ? "Certificado de Proficiência em Inglês (CPE)"
+        : "Certificate of Proficiency in English (CPE)",
     issuer: "Cambridge Assessment English",
     date: "2017",
     icon: Languages,
-    skills: ["C2 Level", "English Proficiency", "Academic English"],
+    skills:
+      locale === "pt-BR"
+        ? ["Nível C2", "Proficiência em Inglês", "Inglês Acadêmico"]
+        : ["C2 Level", "English Proficiency", "Academic English"],
   },
 ];
 
-export default function Courses() {
+export default function Courses({ locale, dict }: CoursesProps) {
+  const postgraduate = getPostgraduate(locale);
+  const nanodegrees = getNanodegrees(locale);
+  const certifications = getCertifications(locale);
+
   return (
     <section id="courses" className="py-20 bg-terminal-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -232,17 +277,17 @@ export default function Courses() {
         <div className="mb-16">
           <div className="inline-block px-4 py-2 bg-terminal-green/10 border border-terminal-green/30 rounded mb-4">
             <span className="terminal-text text-sm">
-              <span className="text-terminal-green/60">$</span> cat
-              /var/log/learning.log
+              <span className="text-terminal-green/60">$</span>{" "}
+              {dict.courses.command}
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold terminal-text mb-4">
-            Education & Certifications
+            {dict.courses.title}
           </h2>
           <p className="text-terminal-green/60 max-w-2xl">
-            {
-              "// Continuous learning in Full Stack Development, Security, and Cloud"
-            }
+            {locale === "pt-BR"
+              ? "// Aprendizado contínuo em Desenvolvimento Full Stack, Segurança e Cloud"
+              : "// Continuous learning in Full Stack Development, Security, and Cloud"}
           </p>
         </div>
 
@@ -250,7 +295,8 @@ export default function Courses() {
         <div className="mb-16">
           <h3 className="text-xl font-bold terminal-text mb-6 flex items-center gap-3">
             <GraduationCap className="w-5 h-5 text-purple-400" />
-            <span className="text-terminal-green/60">~/</span>postgraduate/
+            <span className="text-terminal-green/60">~/</span>
+            {locale === "pt-BR" ? "pos-graduacao" : "postgraduate"}/
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {postgraduate.map((pg) => {
@@ -302,7 +348,8 @@ export default function Courses() {
         <div className="mb-16">
           <h3 className="text-xl font-bold terminal-text mb-6 flex items-center gap-3">
             <Award className="w-5 h-5 text-cyan-400" />
-            <span className="text-terminal-green/60">~/</span>certifications/
+            <span className="text-terminal-green/60">~/</span>
+            {locale === "pt-BR" ? "certificacoes" : "certifications"}/
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {certifications.map((cert) => {
@@ -403,7 +450,7 @@ export default function Courses() {
                     className="inline-flex items-center gap-2 text-sm terminal-text hover:text-terminal-green transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    View Program
+                    {locale === "pt-BR" ? "Ver Programa" : "View Program"}
                   </Link>
                 </div>
               );
@@ -415,7 +462,8 @@ export default function Courses() {
         <div className="mb-16">
           <h3 className="text-xl font-bold terminal-text mb-6 flex items-center gap-3">
             <GraduationCap className="w-5 h-5 text-blue-400" />
-            <span className="text-terminal-green/60">~/</span>courses/
+            <span className="text-terminal-green/60">~/</span>
+            {locale === "pt-BR" ? "cursos" : "courses"}/
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {courses.map((course) => {
@@ -469,35 +517,46 @@ export default function Courses() {
               <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
             </div>
             <span className="text-terminal-green/50 text-xs ml-2">
-              learning_stats.sh
+              {locale === "pt-BR"
+                ? "estatisticas_aprendizado.sh"
+                : "learning_stats.sh"}
             </span>
           </div>
           <div className="font-mono text-sm space-y-1">
             <p className="text-terminal-green/60">
               <span className="text-terminal-green">$</span> cat
-              learning_summary.txt
+              {locale === "pt-BR"
+                ? " resumo_aprendizado.txt"
+                : " learning_summary.txt"}
             </p>
             <p className="text-terminal-green/80 mt-2">
-              Postgraduate Degrees: <span className="text-purple-400">2</span>{" "}
-              (UTFPR, IPOG)
+              {locale === "pt-BR" ? "Pós-Graduações" : "Postgraduate Degrees"}:{" "}
+              <span className="text-purple-400">2</span> (UTFPR, IPOG)
             </p>
             <p className="text-terminal-green/80">
               Nanodegrees: <span className="text-terminal-green">2</span>{" "}
               (Udacity)
             </p>
             <p className="text-terminal-green/80">
-              Courses: <span className="text-terminal-green">5</span> (Red Hat,
+              {locale === "pt-BR" ? "Cursos" : "Courses"}:{" "}
+              <span className="text-terminal-green">5</span> (Red Hat,
               EC-Council, Google Cloud, Cisco)
             </p>
             <p className="text-terminal-green/80">
-              Certifications: <span className="text-cyan-400">2</span>{" "}
-              (OutSystems ODC, Cambridge CPE)
+              {locale === "pt-BR" ? "Certificações" : "Certifications"}:{" "}
+              <span className="text-cyan-400">2</span> (OutSystems ODC,
+              Cambridge CPE)
             </p>
             <p className="text-terminal-green/80">
-              Focus Areas: <span className="text-cyan-400">Full Stack</span>,{" "}
-              <span className="text-cyan-400">Security</span>,{" "}
-              <span className="text-cyan-400">DevOps</span>,{" "}
-              <span className="text-cyan-400">Data</span>
+              {locale === "pt-BR" ? "Áreas de Foco" : "Focus Areas"}:{" "}
+              <span className="text-cyan-400">Full Stack</span>,{" "}
+              <span className="text-cyan-400">
+                {locale === "pt-BR" ? "Segurança" : "Security"}
+              </span>
+              , <span className="text-cyan-400">DevOps</span>,{" "}
+              <span className="text-cyan-400">
+                {locale === "pt-BR" ? "Dados" : "Data"}
+              </span>
             </p>
           </div>
         </div>
