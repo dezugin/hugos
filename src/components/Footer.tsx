@@ -3,15 +3,13 @@
 
 import Link from "next/link";
 import { Github, Linkedin, Mail, Terminal } from "lucide-react";
-import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 interface FooterProps {
-  locale: Locale;
   dict: Dictionary;
 }
 
-export default function Footer({ locale, dict }: FooterProps) {
+export default function Footer({ dict }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -21,7 +19,7 @@ export default function Footer({ locale, dict }: FooterProps) {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link
-              href={`/${locale}`}
+              href="/"
               className="flex items-center gap-2 terminal-text text-lg font-bold"
             >
               <Terminal className="w-5 h-5 text-terminal-green" />
@@ -30,9 +28,7 @@ export default function Footer({ locale, dict }: FooterProps) {
               </span>
             </Link>
             <p className="mt-4 text-terminal-green/50 text-sm font-mono">
-              {locale === "pt-BR"
-                ? "Engenheiro Full Stack especializado em DevOps, Engenharia de Dados e Infraestrutura Cloud."
-                : "Full Stack Engineer specializing in DevOps, Data Engineering, and Cloud Infrastructure."}
+              {dict.footer.description}
             </p>
           </div>
 
@@ -40,7 +36,7 @@ export default function Footer({ locale, dict }: FooterProps) {
           <div>
             <h4 className="terminal-text font-semibold mb-4 text-sm">
               <span className="text-terminal-green/60">~/</span>
-              {locale === "pt-BR" ? "navegacao" : "navigation"}
+              {dict.footer.navigation}
             </h4>
             <ul className="space-y-2 text-terminal-green/60 text-sm font-mono">
               <li>
@@ -82,7 +78,7 @@ export default function Footer({ locale, dict }: FooterProps) {
           <div>
             <h4 className="terminal-text font-semibold mb-4 text-sm">
               <span className="text-terminal-green/60">~/</span>
-              {locale === "pt-BR" ? "mais" : "more"}
+              {dict.footer.more}
             </h4>
             <ul className="space-y-2 text-terminal-green/60 text-sm font-mono">
               <li>
@@ -180,9 +176,7 @@ export default function Footer({ locale, dict }: FooterProps) {
                 target="_blank"
                 className="text-terminal-green/60 hover:text-terminal-green transition-colors underline"
               >
-                {locale === "pt-BR"
-                  ? "Licença Creative Commons Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional"
-                  : "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"}
+                {dict.footer.cc_license}
               </a>
             </p>
           </div>

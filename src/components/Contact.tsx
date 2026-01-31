@@ -12,20 +12,15 @@ import {
   Languages,
 } from "lucide-react";
 import Link from "next/link";
-import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 interface ContactProps {
-  locale: Locale;
   dict: Dictionary;
 }
 
-const getContactEmails = (locale: Locale) => [
+const getContactEmails = (dict: Dictionary) => [
   {
-    type:
-      locale === "pt-BR"
-        ? "Programação & Desenvolvimento"
-        : "Programming & Development",
+    type: dict.contact.programming_dev,
     email: "code@hugos.com.br",
     icon: Code2,
     color: "text-green-400",
@@ -33,7 +28,7 @@ const getContactEmails = (locale: Locale) => [
     borderColor: "border-green-500/30",
   },
   {
-    type: locale === "pt-BR" ? "Pesquisa & Academia" : "Research & Academia",
+    type: dict.contact.research_academia,
     email: "research@hugos.com.br",
     icon: BookOpen,
     color: "text-blue-400",
@@ -41,7 +36,7 @@ const getContactEmails = (locale: Locale) => [
     borderColor: "border-blue-500/30",
   },
   {
-    type: locale === "pt-BR" ? "Serviços de Tradução" : "Translation Services",
+    type: dict.contact.translation_services,
     email: "translate@hugos.com.br",
     icon: Languages,
     color: "text-yellow-400",
@@ -59,8 +54,8 @@ const getAccessKeyForSubject = (subject: string): string => {
   return process.env.NEXT_PUBLIC_WEB3FORMS_KEY_GENERAL || "";
 };
 
-export default function Contact({ locale, dict }: ContactProps) {
-  const contactEmails = getContactEmails(locale);
+export default function Contact({ dict }: ContactProps) {
+  const contactEmails = getContactEmails(dict);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -280,7 +275,7 @@ export default function Contact({ locale, dict }: ContactProps) {
                   {dict.contact.location_label}
                 </p>
                 <p className="terminal-text">
-                  Belo Horizonte, MG, {locale === "pt-BR" ? "Brasil" : "Brazil"}
+                  Belo Horizonte, MG, {dict.contact.brazil}
                 </p>
               </div>
             </div>
@@ -379,9 +374,7 @@ export default function Contact({ locale, dict }: ContactProps) {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg border border-terminal-green/30 bg-terminal-dark text-terminal-green focus:ring-1 focus:ring-terminal-green focus:border-terminal-green transition-all font-mono text-sm placeholder:text-terminal-green/30"
-                        placeholder={
-                          locale === "pt-BR" ? "seu_nome" : "your_name"
-                        }
+                        placeholder={dict.contact.your_name}
                       />
                     </div>
                     <div>
@@ -400,11 +393,7 @@ export default function Contact({ locale, dict }: ContactProps) {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg border border-terminal-green/30 bg-terminal-dark text-terminal-green focus:ring-1 focus:ring-terminal-green focus:border-terminal-green transition-all font-mono text-sm placeholder:text-terminal-green/30"
-                        placeholder={
-                          locale === "pt-BR"
-                            ? "seu@email.com"
-                            : "your@email.com"
-                        }
+                        placeholder={dict.contact.your_email}
                       />
                     </div>
                   </div>
@@ -463,11 +452,7 @@ export default function Contact({ locale, dict }: ContactProps) {
                       required
                       rows={5}
                       className="w-full px-4 py-3 rounded-lg border border-terminal-green/30 bg-terminal-dark text-terminal-green focus:ring-1 focus:ring-terminal-green focus:border-terminal-green transition-all resize-none font-mono text-sm placeholder:text-terminal-green/30"
-                      placeholder={
-                        locale === "pt-BR"
-                          ? "// Escreva sua mensagem aqui..."
-                          : "// Write your message here..."
-                      }
+                      placeholder={dict.contact.message_placeholder}
                     />
                   </div>
                   <button

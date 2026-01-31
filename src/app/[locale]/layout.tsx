@@ -20,15 +20,35 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-  const titles = {
+  const titles: Record<Locale, string> = {
     en: "Hugo Souza-Almeida | Full Stack Engineer",
     "pt-BR": "Hugo Souza-Almeida | Engenheiro Full Stack",
+    es: "Hugo Souza-Almeida | Ingeniero Full Stack",
+    uk: "Hugo Souza-Almeida | Full Stack Інженер",
+    ru: "Hugo Souza-Almeida | Full Stack Инженер",
+    de: "Hugo Souza-Almeida | Full Stack Ingenieur",
+    fr: "Hugo Souza-Almeida | Ingénieur Full Stack",
   };
 
-  const descriptions = {
+  const descriptions: Record<Locale, string> = {
     en: "Full Stack Engineer specializing in DevOps, Data Engineering, and Web Development. Based in Belo Horizonte, Brazil.",
     "pt-BR":
       "Engenheiro Full Stack especializado em DevOps, Engenharia de Dados e Desenvolvimento Web. Baseado em Belo Horizonte, Brasil.",
+    es: "Ingeniero Full Stack especializado en DevOps, Ingeniería de Datos y Desarrollo Web. Radicado en Belo Horizonte, Brasil.",
+    uk: "Full Stack інженер, що спеціалізується на DevOps, інженерії даних та веб-розробці. Базується в Белу-Оризонті, Бразилія.",
+    ru: "Full Stack инженер, специализирующийся на DevOps, инженерии данных и веб-разработке. Базируется в Белу-Оризонти, Бразилия.",
+    de: "Full Stack Ingenieur mit Spezialisierung auf DevOps, Data Engineering und Webentwicklung. Ansässig in Belo Horizonte, Brasilien.",
+    fr: "Ingénieur Full Stack spécialisé en DevOps, Ingénierie des Données et Développement Web. Basé à Belo Horizonte, Brésil.",
+  };
+
+  const openGraphLocales: Record<Locale, string> = {
+    en: "en_US",
+    "pt-BR": "pt_BR",
+    es: "es_ES",
+    uk: "uk_UA",
+    ru: "ru_RU",
+    de: "de_DE",
+    fr: "fr_FR",
   };
 
   return {
@@ -51,12 +71,17 @@ export async function generateMetadata({
       description: descriptions[locale],
       type: "website",
       url: "https://hugos.com.br",
-      locale: locale === "pt-BR" ? "pt_BR" : "en_US",
+      locale: openGraphLocales[locale],
     },
     alternates: {
       languages: {
         en: "/en",
         "pt-BR": "/pt-BR",
+        es: "/es",
+        uk: "/uk",
+        ru: "/ru",
+        de: "/de",
+        fr: "/fr",
       },
     },
   };

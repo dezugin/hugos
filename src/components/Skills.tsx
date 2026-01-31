@@ -9,6 +9,9 @@ interface SkillsProps {
   dict: Dictionary;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _localeType: Locale = "en"; // Keep Locale import used
+
 const skills = {
   "DevOps & Cloud": {
     icon: Cloud,
@@ -64,50 +67,43 @@ const skills = {
   },
 };
 
-const skillsCategoryTranslations: Record<
-  string,
-  { en: string; "pt-BR": string }
-> = {
-  "DevOps & Cloud": { en: "DevOps & Cloud", "pt-BR": "DevOps & Cloud" },
-  "Data Engineering": {
-    en: "Data Engineering",
-    "pt-BR": "Engenharia de Dados",
-  },
-  "Backend & APIs": { en: "Backend & APIs", "pt-BR": "Backend & APIs" },
-  Frontend: { en: "Frontend", "pt-BR": "Frontend" },
-  "Tools & Testing": { en: "Tools & Testing", "pt-BR": "Ferramentas & Testes" },
-  "Web Scraping": { en: "Web Scraping", "pt-BR": "Web Scraping" },
+const skillsCategoryKeys: Record<string, keyof Dictionary["skills"]> = {
+  "DevOps & Cloud": "cloud_devops",
+  "Data Engineering": "data_engineering",
+  "Backend & APIs": "backend_apis",
+  Frontend: "web_development",
+  "Tools & Testing": "tools_testing",
+  "Web Scraping": "programming",
 };
 
-const getLanguages = (locale: Locale) => [
-  {
-    name: locale === "pt-BR" ? "Português" : "Portuguese",
-    level: locale === "pt-BR" ? "Nativo" : "Native",
-    percentage: 100,
-    flag: "🇧🇷",
-  },
-  {
-    name: locale === "pt-BR" ? "Inglês" : "English",
-    level: locale === "pt-BR" ? "Fluente" : "Fluent",
-    percentage: 95,
-    flag: "🇺🇸",
-  },
-  {
-    name: locale === "pt-BR" ? "Espanhol" : "Spanish",
-    level: locale === "pt-BR" ? "Intermediário" : "Intermediate",
-    percentage: 60,
-    flag: "🇪🇸",
-  },
-  {
-    name: locale === "pt-BR" ? "Russo" : "Russian",
-    level: locale === "pt-BR" ? "Intermediário" : "Intermediate",
-    percentage: 50,
-    flag: "🇷🇺",
-  },
-];
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Skills({ locale, dict }: SkillsProps) {
-  const languages = getLanguages(locale);
+  const languages = [
+    {
+      name: dict.skills.portuguese,
+      level: dict.skills.native,
+      percentage: 100,
+      flag: "🇧🇷",
+    },
+    {
+      name: dict.skills.english,
+      level: dict.skills.fluent,
+      percentage: 95,
+      flag: "🇺🇸",
+    },
+    {
+      name: dict.skills.spanish,
+      level: dict.skills.intermediate,
+      percentage: 60,
+      flag: "🇪🇸",
+    },
+    {
+      name: dict.skills.russian,
+      level: dict.skills.intermediate,
+      percentage: 50,
+      flag: "🇷🇺",
+    },
+  ];
 
   return (
     <section id="skills" className="py-20 bg-gray-950">
@@ -125,31 +121,36 @@ export default function Skills({ locale, dict }: SkillsProps) {
 
         {/* Technical Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {Object.entries(skills).map(([category, { icon: Icon, items }]) => (
-            <div
-              key={category}
-              className="bg-black border border-green-900/50 rounded-lg p-6 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)] group"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-green-500/10 rounded-lg group-hover:bg-green-500/20 transition-colors">
-                  <Icon className="w-5 h-5 text-green-500" />
+          {Object.entries(skills).map(([category, { icon: Icon, items }]) => {
+            const key = skillsCategoryKeys[category];
+            const translatedCategory = key ? dict.skills[key] : category;
+
+            return (
+              <div
+                key={category}
+                className="bg-black border border-green-900/50 rounded-lg p-6 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)] group"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-green-500/10 rounded-lg group-hover:bg-green-500/20 transition-colors">
+                    <Icon className="w-5 h-5 text-green-500" />
+                  </div>
+                  <h4 className="font-mono text-green-400 font-semibold">
+                    {translatedCategory}
+                  </h4>
                 </div>
-                <h4 className="font-mono text-green-400 font-semibold">
-                  {skillsCategoryTranslations[category]?.[locale] || category}
-                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {items.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 bg-green-500/10 border border-green-900/50 text-green-400/80 rounded text-xs font-mono hover:border-green-500/50 hover:text-green-400 transition-all cursor-default"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 bg-green-500/10 border border-green-900/50 text-green-400/80 rounded text-xs font-mono hover:border-green-500/50 hover:text-green-400 transition-all cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Languages Section */}
@@ -157,7 +158,7 @@ export default function Skills({ locale, dict }: SkillsProps) {
           <div className="flex items-center gap-3 mb-6">
             <h3 className="text-xl font-mono text-green-400">
               <span className="text-green-600">{">"}</span>{" "}
-              {locale === "pt-BR" ? "idiomas --falados" : "languages --spoken"}
+              {dict.skills.languages_spoken}
             </h3>
           </div>
 

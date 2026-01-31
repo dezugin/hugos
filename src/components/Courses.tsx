@@ -18,67 +18,34 @@ import {
   BookOpen,
 } from "lucide-react";
 import Link from "next/link";
-import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 interface CoursesProps {
-  locale: Locale;
   dict: Dictionary;
 }
 
-const getPostgraduate = (locale: Locale) => [
+const getPostgraduate = (dict: Dictionary) => [
   {
-    title:
-      locale === "pt-BR" ? "Segurança da Informação" : "Information Security",
-    institution:
-      locale === "pt-BR"
-        ? "UTFPR - Universidade Tecnológica Federal do Paraná"
-        : "UTFPR - Federal Technological University of Paraná",
+    title: dict.courses.info_security,
+    institution: dict.courses.utfpr_institution,
     icon: Shield,
     date: "2024",
-    type: locale === "pt-BR" ? "Pós-Graduação" : "Postgraduate Specialization",
-    skills:
-      locale === "pt-BR"
-        ? [
-            "Cibersegurança",
-            "Segurança de Redes",
-            "Criptografia",
-            "Gestão de Riscos",
-          ]
-        : [
-            "Cybersecurity",
-            "Network Security",
-            "Cryptography",
-            "Risk Management",
-          ],
+    type: dict.courses.postgraduate,
+    skills: dict.courses.infosec_skills.split(",").map((s: string) => s.trim()),
   },
   {
-    title:
-      locale === "pt-BR"
-        ? "Perícia Forense Computacional"
-        : "Computer Forensics",
+    title: dict.courses.forensics,
     institution: "IPOG - Instituto de Pós-Graduação",
     icon: Search,
     date: "2025",
-    type: locale === "pt-BR" ? "Pós-Graduação" : "Postgraduate Specialization",
-    skills:
-      locale === "pt-BR"
-        ? [
-            "Evidência Digital",
-            "Análise Forense",
-            "Resposta a Incidentes",
-            "Legal",
-          ]
-        : [
-            "Digital Evidence",
-            "Forensic Analysis",
-            "Incident Response",
-            "Legal",
-          ],
+    type: dict.courses.postgraduate,
+    skills: dict.courses.forensics_skills
+      .split(",")
+      .map((s: string) => s.trim()),
   },
 ];
 
-const getNanodegrees = (locale: Locale) => [
+const getNanodegrees = (dict: Dictionary) => [
   {
     title: "Cloud DevOps using Microsoft Azure",
     provider: "Udacity Nanodegree",
@@ -94,10 +61,7 @@ const getNanodegrees = (locale: Locale) => [
       "Selenium",
       "Locust",
     ],
-    description:
-      locale === "pt-BR"
-        ? "Infrastructure as Code, testes de performance e deploys automatizados"
-        : "Infrastructure as Code, performance testing, and automated deployments",
+    description: dict.courses.nanodegree_1_desc,
   },
   {
     title: "Data Engineering",
@@ -106,10 +70,7 @@ const getNanodegrees = (locale: Locale) => [
     date: "2021-2022",
     link: "https://www.udacity.com/course/data-engineer-nanodegree--nd027",
     skills: ["PostgreSQL", "Cassandra", "Spark", "Airflow", "Redshift", "S3"],
-    description:
-      locale === "pt-BR"
-        ? "Modelagem de dados, data lakes, pipelines com Spark e Airflow"
-        : "Data modeling, data lakes, pipelines with Spark and Airflow",
+    description: dict.courses.nanodegree_2_desc,
   },
 ];
 
@@ -242,7 +203,7 @@ const courses = [
   },
 ];
 
-const getCertifications = (locale: Locale) => [
+const getCertifications = (dict: Dictionary) => [
   {
     title: "OutSystems Associate Developer Certificate (ODC)",
     issuer: "OutSystems",
@@ -251,24 +212,18 @@ const getCertifications = (locale: Locale) => [
     skills: ["Low-Code", "OutSystems", "ODC", "Cloud-Native"],
   },
   {
-    title:
-      locale === "pt-BR"
-        ? "Certificado de Proficiência em Inglês (CPE)"
-        : "Certificate of Proficiency in English (CPE)",
+    title: dict.courses.cpe_title,
     issuer: "Cambridge Assessment English",
     date: "2017",
     icon: Languages,
-    skills:
-      locale === "pt-BR"
-        ? ["Nível C2", "Proficiência em Inglês", "Inglês Acadêmico"]
-        : ["C2 Level", "English Proficiency", "Academic English"],
+    skills: dict.courses.cpe_skills.split(",").map((s: string) => s.trim()),
   },
 ];
 
-export default function Courses({ locale, dict }: CoursesProps) {
-  const postgraduate = getPostgraduate(locale);
-  const nanodegrees = getNanodegrees(locale);
-  const certifications = getCertifications(locale);
+export default function Courses({ dict }: CoursesProps) {
+  const postgraduate = getPostgraduate(dict);
+  const nanodegrees = getNanodegrees(dict);
+  const certifications = getCertifications(dict);
 
   return (
     <section id="courses" className="py-20 bg-terminal-bg">
@@ -285,9 +240,7 @@ export default function Courses({ locale, dict }: CoursesProps) {
             {dict.courses.title}
           </h2>
           <p className="text-terminal-green/60 max-w-2xl">
-            {locale === "pt-BR"
-              ? "// Aprendizado contínuo em Desenvolvimento Full Stack, Segurança e Cloud"
-              : "// Continuous learning in Full Stack Development, Security, and Cloud"}
+            {dict.courses.subtitle}
           </p>
         </div>
 
@@ -296,7 +249,7 @@ export default function Courses({ locale, dict }: CoursesProps) {
           <h3 className="text-xl font-bold terminal-text mb-6 flex items-center gap-3">
             <GraduationCap className="w-5 h-5 text-purple-400" />
             <span className="text-terminal-green/60">~/</span>
-            {locale === "pt-BR" ? "pos-graduacao" : "postgraduate"}/
+            {dict.courses.postgraduate_path}/
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {postgraduate.map((pg) => {
@@ -349,7 +302,7 @@ export default function Courses({ locale, dict }: CoursesProps) {
           <h3 className="text-xl font-bold terminal-text mb-6 flex items-center gap-3">
             <Award className="w-5 h-5 text-cyan-400" />
             <span className="text-terminal-green/60">~/</span>
-            {locale === "pt-BR" ? "certificacoes" : "certifications"}/
+            {dict.courses.certifications_path}/
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {certifications.map((cert) => {
@@ -450,7 +403,7 @@ export default function Courses({ locale, dict }: CoursesProps) {
                     className="inline-flex items-center gap-2 text-sm terminal-text hover:text-terminal-green transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    {locale === "pt-BR" ? "Ver Programa" : "View Program"}
+                    {dict.courses.view_program}
                   </Link>
                 </div>
               );
@@ -463,7 +416,7 @@ export default function Courses({ locale, dict }: CoursesProps) {
           <h3 className="text-xl font-bold terminal-text mb-6 flex items-center gap-3">
             <GraduationCap className="w-5 h-5 text-blue-400" />
             <span className="text-terminal-green/60">~/</span>
-            {locale === "pt-BR" ? "cursos" : "courses"}/
+            {dict.courses.courses_path}/
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {courses.map((course) => {
@@ -517,20 +470,16 @@ export default function Courses({ locale, dict }: CoursesProps) {
               <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
             </div>
             <span className="text-terminal-green/50 text-xs ml-2">
-              {locale === "pt-BR"
-                ? "estatisticas_aprendizado.sh"
-                : "learning_stats.sh"}
+              {dict.courses.learning_stats_file}
             </span>
           </div>
           <div className="font-mono text-sm space-y-1">
             <p className="text-terminal-green/60">
-              <span className="text-terminal-green">$</span> cat
-              {locale === "pt-BR"
-                ? " resumo_aprendizado.txt"
-                : " learning_summary.txt"}
+              <span className="text-terminal-green">$</span> cat{" "}
+              {dict.courses.learning_summary_file}
             </p>
             <p className="text-terminal-green/80 mt-2">
-              {locale === "pt-BR" ? "Pós-Graduações" : "Postgraduate Degrees"}:{" "}
+              {dict.courses.postgraduate_degrees}:{" "}
               <span className="text-purple-400">2</span> (UTFPR, IPOG)
             </p>
             <p className="text-terminal-green/80">
@@ -538,25 +487,21 @@ export default function Courses({ locale, dict }: CoursesProps) {
               (Udacity)
             </p>
             <p className="text-terminal-green/80">
-              {locale === "pt-BR" ? "Cursos" : "Courses"}:{" "}
+              {dict.courses.courses_label}:{" "}
               <span className="text-terminal-green">5</span> (Red Hat,
               EC-Council, Google Cloud, Cisco)
             </p>
             <p className="text-terminal-green/80">
-              {locale === "pt-BR" ? "Certificações" : "Certifications"}:{" "}
+              {dict.courses.certifications_label}:{" "}
               <span className="text-cyan-400">2</span> (OutSystems ODC,
               Cambridge CPE)
             </p>
             <p className="text-terminal-green/80">
-              {locale === "pt-BR" ? "Áreas de Foco" : "Focus Areas"}:{" "}
+              {dict.courses.focus_areas}:{" "}
               <span className="text-cyan-400">Full Stack</span>,{" "}
-              <span className="text-cyan-400">
-                {locale === "pt-BR" ? "Segurança" : "Security"}
-              </span>
-              , <span className="text-cyan-400">DevOps</span>,{" "}
-              <span className="text-cyan-400">
-                {locale === "pt-BR" ? "Dados" : "Data"}
-              </span>
+              <span className="text-cyan-400">{dict.courses.security}</span>,{" "}
+              <span className="text-cyan-400">DevOps</span>,{" "}
+              <span className="text-cyan-400">{dict.courses.data}</span>
             </p>
           </div>
         </div>

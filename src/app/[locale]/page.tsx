@@ -22,15 +22,15 @@ export default async function Home({
   return (
     <main className="min-h-screen">
       <Navbar locale={locale} dict={dict} />
-      <Hero locale={locale} dict={dict} />
-      <About locale={locale} dict={dict} />
+      <Hero dict={dict} />
+      <About dict={dict} />
       <Skills locale={locale} dict={dict} />
-      <CodeProjects locale={locale} dict={dict} />
-      <Research locale={locale} dict={dict} />
-      <Courses locale={locale} dict={dict} />
+      <CodeProjects dict={dict} />
+      <Research dict={dict} />
+      <Courses dict={dict} />
       <Reading locale={locale} dict={dict} />
-      <Contact locale={locale} dict={dict} />
-      <Footer locale={locale} dict={dict} />
+      <Contact dict={dict} />
+      <Footer dict={dict} />
     </main>
   );
 }

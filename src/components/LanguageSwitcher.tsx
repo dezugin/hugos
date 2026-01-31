@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { locales, type Locale, localeNames } from "@/i18n/config";
+import { locales, type Locale, localeNames, localeFlags } from "@/i18n/config";
 
 interface LanguageSwitcherProps {
   currentLocale: Locale;
@@ -52,10 +52,10 @@ export default function LanguageSwitcher({
         aria-label="Select language"
       >
         <span className="text-lg leading-none">
-          {currentLocale === "en" ? "🇺🇸" : "🇧🇷"}
+          {localeFlags[currentLocale]}
         </span>
         <span className="text-terminal-green/70 hidden sm:inline">
-          {currentLocale === "en" ? "EN" : "PT"}
+          {currentLocale.toUpperCase().split("-")[0]}
         </span>
         <ChevronDown
           className={`w-3 h-3 text-terminal-green/50 transition-transform ${
@@ -78,7 +78,7 @@ export default function LanguageSwitcher({
               }`}
             >
               <span className="text-lg leading-none">
-                {locale === "en" ? "🇺🇸" : "🇧🇷"}
+                {localeFlags[locale]}
               </span>
               <span className="text-sm">{localeNames[locale]}</span>
               {locale === currentLocale && (

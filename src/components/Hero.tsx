@@ -11,24 +11,19 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { type Locale } from "@/i18n/config";
 import { type Dictionary } from "@/i18n/dictionaries";
 
 interface HeroProps {
-  locale: Locale;
   dict: Dictionary;
 }
 
-const getTerminalLines = (locale: Locale) => [
+const getTerminalLines = (dict: Dictionary) => [
   { type: "command", text: "whoami" },
   { type: "output", text: "hugo_souza_almeida" },
   { type: "command", text: "cat role.txt" },
   {
     type: "output",
-    text:
-      locale === "pt-BR"
-        ? "Desenvolvedor Full Stack @ RHI Magnesita"
-        : "Full Stack Developer @ RHI Magnesita",
+    text: dict.hero.role_output,
   },
   { type: "command", text: "cat stack.txt" },
   {
@@ -39,25 +34,22 @@ const getTerminalLines = (locale: Locale) => [
   { type: "output", text: "Belo Horizonte, Brazil 🇧🇷" },
   {
     type: "command",
-    text: locale === "pt-BR" ? "cat tradutor.txt" : "cat translator.txt",
+    text: dict.hero.translator_command,
   },
   {
     type: "output",
-    text: "🌐 Tradutor Juramentado (Sworn Translator)",
+    text: dict.hero.translator_title,
     link: true,
   },
   {
     type: "output",
-    text:
-      locale === "pt-BR"
-        ? "   Português <-> Inglês"
-        : "   Portuguese <-> English",
+    text: dict.hero.translator_languages,
   },
 ];
 
-export default function Hero({ locale, dict }: HeroProps) {
+export default function Hero({ dict }: HeroProps) {
   const [displayedLines, setDisplayedLines] = useState<number>(0);
-  const terminalLines = getTerminalLines(locale);
+  const terminalLines = getTerminalLines(dict);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -151,27 +143,27 @@ export default function Hero({ locale, dict }: HeroProps) {
             <div className="text-green-600 text-xs mb-1">{"// stack"}</div>
             <div className="text-green-400 font-bold">Full Stack</div>
             <div className="text-green-600/60 text-sm">
-              {locale === "pt-BR" ? "Frontend ao Cloud" : "Frontend to Cloud"}
+              {dict.hero.frontend_to_cloud}
             </div>
           </div>
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
             <div className="text-green-600 text-xs mb-1">
-              {locale === "pt-BR" ? "// experiência" : "// experience"}
+              {dict.hero.experience_comment}
             </div>
             <div className="text-green-400 font-bold">
-              {locale === "pt-BR" ? "3-5 Anos" : "3-5 Years"}
+              {dict.hero.experience_years}
             </div>
             <div className="text-green-600/60 text-sm">
-              {locale === "pt-BR" ? "em Engenharia" : "in Engineering"}
+              {dict.hero.in_engineering}
             </div>
           </div>
           <div className="bg-gray-950/80 border border-green-900/30 rounded-lg p-4 hover:border-green-500/50 transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]">
             <div className="text-green-600 text-xs mb-1">
-              {locale === "pt-BR" ? "// formação" : "// education"}
+              {dict.hero.education_comment}
             </div>
             <div className="text-green-400 font-bold">CS + InfoSec</div>
             <div className="text-green-600/60 text-sm">
-              {locale === "pt-BR" ? "Grad + Pós-Grad" : "BSc + Postgrad"}
+              {dict.hero.education_value}
             </div>
           </div>
         </div>
