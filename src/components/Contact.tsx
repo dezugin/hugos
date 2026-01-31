@@ -40,6 +40,15 @@ const contactEmails = [
   },
 ];
 
+// Map form subjects to their corresponding Web3Forms access keys
+const getAccessKeyForSubject = (subject: string): string => {
+  if (subject === "translation") {
+    return process.env.NEXT_PUBLIC_WEB3FORMS_KEY_TRANSLATE || "";
+  }
+  // All other subjects go to hey@hugos.com.br
+  return process.env.NEXT_PUBLIC_WEB3FORMS_KEY_GENERAL || "";
+};
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -49,6 +58,7 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Check URL hash for pre-selected subject
   useEffect(() => {
@@ -72,11 +82,48 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setError(null);
+
+    const accessKey = getAccessKeyForSubject(formData.subject);
+
+    if (!accessKey) {
+      setError("Configuration error. Please email me directly.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          subject: `[Portfolio Contact] ${formData.subject}`,
+          message: formData.message,
+          from_name: "Portfolio Contact Form",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setError(
+          "Failed to send message. Please try again or email me directly.",
+        );
+      }
+    } catch {
+      setError("Network error. Please try again or email me directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -288,6 +335,11 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {error && (
+                    <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm font-mono">
+                      <span className="text-red-500">error:</span> {error}
+                    </div>
+                  )}
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label
