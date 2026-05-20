@@ -1,6 +1,5 @@
-import { redirect } from "next/navigation";
-import { defaultLocale } from "@/i18n/config";
-
-export default function Home() {
-  redirect(`/${defaultLocale}`);
+// This page should never be reached - middleware redirects `/` to `/${locale}`
+// If you see this, the middleware isn't working properly
+export default function RootPage() {
+  return null;
 }
