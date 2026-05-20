@@ -28,6 +28,7 @@ export async function generateMetadata({
     ru: "Hugo Souza-Almeida | Full Stack Инженер",
     de: "Hugo Souza-Almeida | Full Stack Ingenieur",
     fr: "Hugo Souza-Almeida | Ingénieur Full Stack",
+    zh: "Hugo Souza-Almeida | 全栈工程师",
   };
 
   const descriptions: Record<Locale, string> = {
@@ -39,6 +40,7 @@ export async function generateMetadata({
     ru: "Full Stack инженер, специализирующийся на DevOps, инженерии данных и веб-разработке. Базируется в Белу-Оризонти, Бразилия.",
     de: "Full Stack Ingenieur mit Spezialisierung auf DevOps, Data Engineering und Webentwicklung. Ansässig in Belo Horizonte, Brasilien.",
     fr: "Ingénieur Full Stack spécialisé en DevOps, Ingénierie des Données et Développement Web. Basé à Belo Horizonte, Brésil.",
+    zh: "全栈工程师，专注于DevOps、数据工程和Web开发。现居巴西贝洛奥里藏特。",
   };
 
   const openGraphLocales: Record<Locale, string> = {
@@ -49,6 +51,7 @@ export async function generateMetadata({
     ru: "ru_RU",
     de: "de_DE",
     fr: "fr_FR",
+    zh: "zh_CN",
   };
 
   return {
@@ -82,6 +85,7 @@ export async function generateMetadata({
         ru: "/ru",
         de: "/de",
         fr: "/fr",
+        zh: "/zh",
       },
     },
   };

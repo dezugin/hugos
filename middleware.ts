@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { locales, defaultLocale, Locale } from "./i18n/config";
+import { locales, defaultLocale, Locale } from "./src/i18n/config";
 
 // Map browser language codes to supported locales
+// Any Portuguese variant → pt-BR, any English → en, etc.
 const languageMap: Record<string, Locale> = {
   // Portuguese variants
   pt: "pt-BR",
@@ -38,19 +39,12 @@ const languageMap: Record<string, Locale> = {
   "fr-ca": "fr",
   "fr-be": "fr",
   "fr-ch": "fr",
-  // Chinese variants
-  zh: "zh",
-  "zh-cn": "zh",
-  "zh-hans": "zh",
-  "zh-tw": "zh",
-  "zh-hant": "zh",
-  "zh-hk": "zh",
-  "zh-sg": "zh",
 };
 
 function getPreferredLocale(acceptLanguage: string | null): Locale {
   if (!acceptLanguage) return defaultLocale;
 
+  // Parse Accept-Language header: "en-US,en;q=0.9,pt-BR;q=0.8"
   const languages = acceptLanguage
     .split(",")
     .map((lang) => {
@@ -63,16 +57,30 @@ function getPreferredLocale(acceptLanguage: string | null): Locale {
     })
     .sort((a, b) => b.priority - a.priority);
 
+  console.log("[i18n] Accept-Language:", acceptLanguage);
+  console.log("[i18n] Parsed languages:", JSON.stringify(languages));
+
+  // Find the first matching locale
   for (const { code } of languages) {
+    // Check exact match first
     if (languageMap[code]) {
+      console.log("[i18n] Matched:", code, "→", languageMap[code]);
       return languageMap[code];
     }
+    // Check primary language (e.g., "en" from "en-US")
     const primaryLang = code.split("-")[0];
     if (languageMap[primaryLang]) {
+      console.log(
+        "[i18n] Matched primary:",
+        primaryLang,
+        "→",
+        languageMap[primaryLang],
+      );
       return languageMap[primaryLang];
     }
   }
 
+  console.log("[i18n] No match, using default:", defaultLocale);
   return defaultLocale;
 }
 
@@ -80,6 +88,20 @@ const LOCALE_COOKIE = "NEXT_LOCALE";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const acceptLang = request.headers.get("accept-language");
+
+  // DEBUG: Force redirect to see if middleware is running
+  if (pathname === "/") {
+    console.log("[MIDDLEWARE] ROOT PATH - FORCING REDIRECT");
+    const url = request.nextUrl.clone();
+    url.pathname = "/pt-BR"; // Force pt-BR for testing
+    return NextResponse.redirect(url);
+  }
+
+  // Debug log at start
+  console.log("[i18n] ============ MIDDLEWARE START ============");
+  console.log("[i18n] pathname:", pathname);
+  console.log("[i18n] Accept-Language header:", acceptLang);
 
   // Check if the pathname already has a locale
   const pathnameHasLocale = locales.some(
@@ -87,7 +109,7 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathnameHasLocale) {
-    // Set cookie to remember user's locale choice
+    // Set cookie to remember user's locale choice when they navigate to a locale
     const currentLocale = locales.find(
       (locale) =>
         pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
@@ -95,7 +117,7 @@ export function middleware(request: NextRequest) {
     if (currentLocale) {
       const response = NextResponse.next();
       response.cookies.set(LOCALE_COOKIE, currentLocale, {
-        maxAge: 60 * 60 * 24 * 365,
+        maxAge: 60 * 60 * 24 * 365, // 1 year
         path: "/",
       });
       return response;
@@ -108,7 +130,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/papers") ||
-    pathname.includes(".")
+    pathname.includes(".") // files like favicon.ico
   ) {
     return NextResponse.next();
   }
@@ -125,16 +147,32 @@ export function middleware(request: NextRequest) {
 
   // Detect browser language from Accept-Language header
   const acceptLanguage = request.headers.get("accept-language");
+
+  // DEBUG: Log raw header
+  console.log("========================================");
+  console.log("[MIDDLEWARE] Accept-Language RAW:", acceptLanguage);
+  console.log(
+    "[MIDDLEWARE] All headers:",
+    JSON.stringify(Object.fromEntries(request.headers.entries())),
+  );
+
   const detectedLocale = getPreferredLocale(acceptLanguage);
 
-  // Redirect to detected locale
+  console.log("[MIDDLEWARE] DETECTED LOCALE:", detectedLocale);
+  console.log("========================================");
+
+  // Redirect to detected or default locale
   const url = request.nextUrl.clone();
   url.pathname = `/${detectedLocale}${pathname}`;
   const response = NextResponse.redirect(url);
 
-  // Save locale preference
+  // Add debug header (check in Network tab on mobile)
+  response.headers.set("X-Detected-Locale", detectedLocale);
+  response.headers.set("X-Accept-Language", acceptLanguage || "none");
+
+  // Save the detected locale preference
   response.cookies.set(LOCALE_COOKIE, detectedLocale, {
-    maxAge: 60 * 60 * 24 * 365,
+    maxAge: 60 * 60 * 24 * 365, // 1 year
     path: "/",
   });
 
@@ -142,5 +180,10 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/((?!_next|api|papers).*)"],
+  matcher: [
+    // Match root path explicitly
+    "/",
+    // Match all paths except static files and internals
+    "/((?!_next|api|papers).*)",
+  ],
 };
