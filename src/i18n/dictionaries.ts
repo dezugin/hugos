@@ -89,9 +89,9 @@ export const getDictionary = async (locale: Locale) => {
   ]);
 
   return mergeWithFallback(
-    englishDictionary as Record<string, unknown>,
-    localeDictionary as Partial<Record<string, unknown>>,
+    englishDictionary,
+    localeDictionary as Partial<typeof englishDictionary>,
   );
 };
 
-export type Dictionary = Awaited<ReturnType<typeof getDictionary>>;
+export type Dictionary = Awaited<ReturnType<typeof dictionaries.en>>;
