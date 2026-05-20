@@ -18,6 +18,20 @@ export const locales = [
   "tr",
   "it",
   "id",
+  "el",
+  "lv",
+  "et",
+  "sl",
+  "hy",
+  "ka",
+  "ro",
+  "bg",
+  "sr",
+  "af",
+  "hr",
+  "hu",
+  "bs",
+  "ms",
   "th",
   "sw",
   "ha",
@@ -36,11 +50,6 @@ export const locales = [
 ] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
-
-export const languagePickerLocales: readonly Locale[] = locales.slice(
-  0,
-  locales.indexOf("ha") + 1,
-);
 
 export const localeNames: Record<Locale, string> = {
   en: "English",
@@ -77,6 +86,20 @@ export const localeNames: Record<Locale, string> = {
   gu: "ગુજરાતી",
   kn: "ಕನ್ನಡ",
   bho: "भोजपुरी",
+  el: "Ελληνικά",
+  lv: "Latviešu",
+  et: "Eesti",
+  sl: "Slovenščina",
+  hy: "Հայdelays",
+  ka: "ქართული",
+  ro: "Română",
+  bg: "Български",
+  sr: "Српски",
+  af: "Afrikaans",
+  hr: "Hrvatski",
+  hu: "Magyar",
+  bs: "Bosanski",
+  ms: "Bahasa Melayu",
 };
 
 export const localeFlags: Record<Locale, string> = {
@@ -114,4 +137,18 @@ export const localeFlags: Record<Locale, string> = {
   gu: "🇮🇳",
   kn: "🇮🇳",
   bho: "🇮🇳",
+  el: "🇬🇷",
+  lv: "🇱🇻",
+  et: "🇪🇪",
+  sl: "🇸🇮",
+  hy: "🇦🇲",
+  ka: "🇬🇪",
+  ro: "🇷🇴",
+  bg: "🇧🇬",
+  sr: "🇷🇸",
+  af: "🇿🇦",
+  hr: "🇭🇷",
+  hu: "🇭🇺",
+  bs: "🇧🇦",
+  ms: "🇲🇾",
 };

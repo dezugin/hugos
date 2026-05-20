@@ -142,6 +142,52 @@ const languageMap: Record<string, Locale> = {
   // Bhojpuri
   bho: "bho",
   "bho-in": "bho",
+  // Greek
+  el: "el",
+  "el-gr": "el",
+  // Latvian
+  lv: "lv",
+  "lv-lv": "lv",
+  // Estonian
+  et: "et",
+  "et-ee": "et",
+  // Slovenian
+  sl: "sl",
+  "sl-si": "sl",
+  // Armenian
+  hy: "hy",
+  "hy-am": "hy",
+  // Georgian
+  ka: "ka",
+  "ka-ge": "ka",
+  // Romanian
+  ro: "ro",
+  "ro-ro": "ro",
+  "ro-md": "ro",
+  // Bulgarian
+  bg: "bg",
+  "bg-bg": "bg",
+  // Serbian
+  sr: "sr",
+  "sr-rs": "sr",
+  "sr-latn": "sr",
+  "sr-cyrl": "sr",
+  // Afrikaans
+  af: "af",
+  "af-za": "af",
+  // Croatian
+  hr: "hr",
+  "hr-hr": "hr",
+  // Hungarian
+  hu: "hu",
+  "hu-hu": "hu",
+  // Bosnian
+  bs: "bs",
+  "bs-ba": "bs",
+  // Malaysian
+  ms: "ms",
+  "ms-my": "ms",
+  "ms-sg": "ms",
 };
 
 function getPreferredLocale(acceptLanguage: string | null): Locale {
