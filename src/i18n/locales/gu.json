@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "મુખ્યપૃષ્ઠ",
+    "about": "વિશે",
+    "skills": "કૌશલ્યો",
+    "projects": "પ્રોજેક્ટ્સ",
+    "research": "સંશોધન",
+    "courses": "કોર્સેસ",
+    "reading": "વાંચન",
+    "contact": "સંપર્ક"
+  },
+  "hero": {
+    "hello": "નમસ્તે!",
+    "name": "હું હ્યુગો છું.",
+    "description": "DevOps, Data Engineering અને Web Development માં વિશેષતા ધરાવતા ફુલ સ્ટેક ઇજનેર.",
+    "location": "Belo Horizonte, Brazil માં સ્થિત"
+  },
+  "about": {
+    "title": "વિશે",
+    "me": "હું સોફ્ટવેર ઇજનેર છું અને વિવિધ ટેક્નોલોજી સ્ટૅક દ્વારા સમસ્યાઓ હલ કરવા પસંદ કરું છું. આધુનિક વેબ ટેકનોલોજી અને ક્લાઉડ ઇન્ફ્રાસ્ટ્રક્ચર વિશે ઉત્સાહી છું.",
+    "download_cv": "CV ડાઉનલોડ કરો"
+  },
+  "skills": {
+    "title": "કૌશલ્યો",
+    "devops": "DevOps & Cloud",
+    "data": "Data Engineering",
+    "web": "Web Development"
+  },
+  "projects": {
+    "title": "પ્રોજેક્ટ્સ",
+    "view_code": "કોડ જુઓ",
+    "visit": "મુલાકાત લો"
+  },
+  "research": {
+    "title": "સંશોધન",
+    "papers": "પેપર & પ્રકાશનો"
+  },
+  "courses": {
+    "title": "કોર્સેસ",
+    "teaching": "શિક્ષણ & વર્કશોપ"
+  },
+  "reading": {
+    "title": "વાંચન",
+    "books": "ભલામણ કરેલી પુસ્તકો"
+  },
+  "contact": {
+    "title": "સંપર્ક",
+    "email": "ઇમેઇલ મોકલો",
+    "linkedin": "LinkedIn પ્રોફાઇલ"
+  },
+  "footer": {
+    "made_by": "Hugo દ્વારા બનાવેલ પોર્ટફોલિયો"
+  },
+  "translation": {
+    "select_language": "ભાષા પસંદ કરો"
+  }
+}

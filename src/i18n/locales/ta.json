@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "முகப்பு",
+    "about": "பற்றி",
+    "skills": "திறன்கள்",
+    "projects": "திட்டங்கள்",
+    "research": "ஆராய்ச்சி",
+    "courses": "பாடநெறிகள்",
+    "reading": "படித்தல்",
+    "contact": "தொடர்பு"
+  },
+  "hero": {
+    "hello": "வணக்கம்!",
+    "name": "நான் ஹ்யூகோ.",
+    "description": "DevOps, Data Engineering மற்றும் Web Development துறைகளில் நிபுணத்துவம் பெற்ற முழு அடுக்கு பொறியாளர்.",
+    "location": "Belo Horizonte, Brazil-இல் வசிக்கிறார்"
+  },
+  "about": {
+    "title": "பற்றி",
+    "me": "நான் பல்வேறு தொழில்நுட்ப அடுக்குகளைப் பயன்படுத்தி பிரச்சினைகளைத் தீர்க்க விரும்பும் மென்பொருள் பொறியாளர். நவீன வலை தொழில்நுட்பங்கள் மற்றும் கிளவுட் உட்கட்டமைப்பில் ஆர்வம் உள்ளது.",
+    "download_cv": "CV பதிவிறக்கவும்"
+  },
+  "skills": {
+    "title": "திறன்கள்",
+    "devops": "DevOps & Cloud",
+    "data": "Data Engineering",
+    "web": "Web Development"
+  },
+  "projects": {
+    "title": "திட்டங்கள்",
+    "view_code": "குறியீட்டை பார்க்க",
+    "visit": "பார்வையிட"
+  },
+  "research": {
+    "title": "ஆராய்ச்சி",
+    "papers": "ஆய்வுக் கட்டுரைகள் & வெளியீடுகள்"
+  },
+  "courses": {
+    "title": "பாடநெறிகள்",
+    "teaching": "கற்பித்தல் & பணிமனை"
+  },
+  "reading": {
+    "title": "படித்தல்",
+    "books": "பரிந்துரைக்கப்பட்ட புத்தகங்கள்"
+  },
+  "contact": {
+    "title": "தொடர்பு",
+    "email": "மின்னஞ்சல் அனுப்பு",
+    "linkedin": "LinkedIn சுயவிவரம்"
+  },
+  "footer": {
+    "made_by": "Hugo உருவாக்கிய போர்ட்ஃபோலியோ"
+  },
+  "translation": {
+    "select_language": "மொழியைத் தேர்ந்தெடுக்கவும்"
+  }
+}

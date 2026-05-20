@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "ಮುಖಪುಟ",
+    "about": "ಬಗ್ಗೆ",
+    "skills": "ಕೌಶಲ್ಯಗಳು",
+    "projects": "ಪ್ರಾಜೆಕ್ಟ್‌ಗಳು",
+    "research": "ಸಂಶೋಧನೆ",
+    "courses": "ಕೋರ್ಸ್‌ಗಳು",
+    "reading": "ಓದು",
+    "contact": "ಸಂಪರ್ಕ"
+  },
+  "hero": {
+    "hello": "ನಮಸ್ಕಾರ!",
+    "name": "ನಾನು ಹ್ಯೂಗೋ.",
+    "description": "DevOps, Data Engineering ಮತ್ತು Web Development ನಲ್ಲಿ ಪರಿಣತಿ ಹೊಂದಿದ ಫುಲ್ ಸ್ಟಾಕ್ ಇಂಜಿನಿಯರ್.",
+    "location": "Belo Horizonte, Brazil ನಲ್ಲಿ ನೆಲೆಸಿದ್ದಾರೆ"
+  },
+  "about": {
+    "title": "ಬಗ್ಗೆ",
+    "me": "ನಾನು ಸಾಫ್ಟ್‌ವೇರ್ ಇಂಜಿನಿಯರ್ ಆಗಿದ್ದು, ವಿವಿಧ ತಂತ್ರಜ್ಞಾನ ಸ್ಟ್ಯಾಕ್‌ಗಳನ್ನು ಬಳಸಿ ಸಮಸ್ಯೆಗಳನ್ನು ಪರಿಹರಿಸಲು ಇಷ್ಟಪಡುತ್ತೇನೆ. ಆಧುನಿಕ ವೆಬ್ ತಂತ್ರಜ್ಞಾನ ಮತ್ತು ಕ್ಲೌಡ್ ಮೂಲಸೌಕರ್ಯಗಳ ಬಗ್ಗೆ ಉತ್ಸಾಹ ಇದೆ.",
+    "download_cv": "CV ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
+  },
+  "skills": {
+    "title": "ಕೌಶಲ್ಯಗಳು",
+    "devops": "DevOps & Cloud",
+    "data": "Data Engineering",
+    "web": "Web Development"
+  },
+  "projects": {
+    "title": "ಪ್ರಾಜೆಕ್ಟ್‌ಗಳು",
+    "view_code": "ಕೋಡ್ ನೋಡಿ",
+    "visit": "ಭೇಟಿ ನೀಡಿ"
+  },
+  "research": {
+    "title": "ಸಂಶೋಧನೆ",
+    "papers": "ಪೇಪರ್‌ಗಳು & ಪ್ರಕಟಣೆಗಳು"
+  },
+  "courses": {
+    "title": "ಕೋರ್ಸ್‌ಗಳು",
+    "teaching": "ಬೋಧನೆ & ವರ್ಕ್‌ಶಾಪ್"
+  },
+  "reading": {
+    "title": "ಓದು",
+    "books": "ಶಿಫಾರಸು ಮಾಡಿದ ಪುಸ್ತಕಗಳು"
+  },
+  "contact": {
+    "title": "ಸಂಪರ್ಕ",
+    "email": "ಇಮೇಲ್ ಕಳುಹಿಸಿ",
+    "linkedin": "LinkedIn ಪ್ರೊಫೈಲ್"
+  },
+  "footer": {
+    "made_by": "Hugo ರಚಿಸಿದ ಪೋರ್ಟ್‌ಫೋಲಿಯೊ"
+  },
+  "translation": {
+    "select_language": "ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ"
+  }
+}
