@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/babel-bible-backend/node_modules
+/babel-bible-backend/.env*
 /.pnp
 .pnp.js
 .yarn/install-state.gz
