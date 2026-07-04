@@ -21,10 +21,22 @@ export function getDonationLimits() {
   return { minimum, maximum };
 }
 
-export function getDonationCurrency(): string {
-  const currency = (process.env.DONATION_CURRENCY ?? "usd").trim().toLowerCase();
+export function getDonationCurrency(requestedCurrency: unknown): string {
+  const defaultCurrency = (process.env.DONATION_CURRENCY ?? "usd").trim().toLowerCase();
+  const allowedCurrencies = new Set(
+    (process.env.DONATION_CURRENCIES ?? "usd,eur,gbp,brl,cad,aud")
+      .split(",")
+      .map((currency) => currency.trim().toLowerCase())
+      .filter(Boolean),
+  );
+  const currency = typeof requestedCurrency === "string"
+    ? requestedCurrency.trim().toLowerCase()
+    : defaultCurrency;
   if (!/^[a-z]{3}$/.test(currency)) {
     throw new Error("DONATION_CURRENCY must be a three-letter currency code.");
+  }
+  if (!allowedCurrencies.has(currency)) {
+    throw new Error(`Currency ${currency} is not enabled for donations.`);
   }
   return currency;
 }

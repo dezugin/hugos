@@ -18,16 +18,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Request body must be valid JSON." }, { status: 400 });
   }
 
-  const { amount, frequency } = (body ?? {}) as {
+  const { amount, currency: requestedCurrency, frequency } = (body ?? {}) as {
     amount?: unknown;
+    currency?: unknown;
     frequency?: unknown;
   };
   let minimum: number;
   let maximum: number;
-  let currency: string;
   try {
     ({ minimum, maximum } = getDonationLimits());
-    currency = getDonationCurrency();
   } catch (error) {
     console.error("[stripe] Invalid donation configuration:", errorMessage(error));
     return NextResponse.json(
@@ -45,6 +44,16 @@ export async function POST(request: NextRequest) {
   if (frequency !== "one-time" && frequency !== "monthly") {
     return NextResponse.json(
       { error: "Frequency must be one-time or monthly." },
+      { status: 400 },
+    );
+  }
+
+  let currency: string;
+  try {
+    currency = getDonationCurrency(requestedCurrency);
+  } catch {
+    return NextResponse.json(
+      { error: "Choose a supported donation currency." },
       { status: 400 },
     );
   }
