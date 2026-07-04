@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import {
   errorMessage,
+  getDonationCurrency,
   getDonationLimits,
   getStripe,
 } from "@/lib/babelBibleStripe";
@@ -21,7 +22,19 @@ export async function POST(request: NextRequest) {
     amount?: unknown;
     frequency?: unknown;
   };
-  const { minimum, maximum } = getDonationLimits();
+  let minimum: number;
+  let maximum: number;
+  let currency: string;
+  try {
+    ({ minimum, maximum } = getDonationLimits());
+    currency = getDonationCurrency();
+  } catch (error) {
+    console.error("[stripe] Invalid donation configuration:", errorMessage(error));
+    return NextResponse.json(
+      { error: "The donation service is temporarily unavailable." },
+      { status: 503 },
+    );
+  }
 
   if (!Number.isSafeInteger(amount) || (amount as number) < minimum || (amount as number) > maximum) {
     return NextResponse.json(
@@ -36,7 +49,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const donationProductId = process.env.STRIPE_DONATION_PRODUCT_ID;
+  const donationProductId = process.env.STRIPE_DONATION_PRODUCT_ID?.trim();
   if (frequency === "monthly" && !donationProductId) {
     return NextResponse.json(
       { error: "Monthly donations are not configured on the server." },
@@ -61,7 +74,7 @@ export async function POST(request: NextRequest) {
     if (frequency === "one-time") {
       const paymentIntent = await stripe.paymentIntents.create({
         amount: amount as number,
-        currency: "usd",
+        currency,
         customer: customer.id,
         automatic_payment_methods: { enabled: true },
         metadata: { frequency, source: "babel-bible-donation" },
@@ -73,7 +86,7 @@ export async function POST(request: NextRequest) {
         items: [
           {
             price_data: {
-              currency: "usd",
+              currency,
               product: donationProductId as string,
               recurring: { interval: "month" },
               unit_amount: amount as number,
