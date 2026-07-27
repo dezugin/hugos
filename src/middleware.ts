@@ -223,6 +223,15 @@ const LOCALE_COOKIE = "NEXT_LOCALE";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  const localePrivacyPath = locales.find((locale) =>
+    pathname === `/${locale}/privacy/babel-bible`,
+  );
+  if (localePrivacyPath) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/privacy/babel-bible";
+    return NextResponse.redirect(url);
+  }
+
   // Check if the pathname already has a locale
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
@@ -250,6 +259,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/papers") ||
+    pathname.startsWith("/privacy") ||
     pathname.includes(".")
   ) {
     return NextResponse.next();
@@ -284,5 +294,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/((?!_next|api|papers).*)"],
+  matcher: ["/", "/((?!_next|api|papers|privacy).*)"],
 };

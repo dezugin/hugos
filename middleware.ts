@@ -90,6 +90,15 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const acceptLang = request.headers.get("accept-language");
 
+  const localePrivacyPath = locales.find((locale) =>
+    pathname === `/${locale}/privacy/babel-bible`,
+  );
+  if (localePrivacyPath) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/privacy/babel-bible";
+    return NextResponse.redirect(url);
+  }
+
   // DEBUG: Force redirect to see if middleware is running
   if (pathname === "/") {
     console.log("[MIDDLEWARE] ROOT PATH - FORCING REDIRECT");
@@ -130,6 +139,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/papers") ||
+    pathname.startsWith("/privacy") ||
     pathname.includes(".") // files like favicon.ico
   ) {
     return NextResponse.next();
@@ -184,6 +194,6 @@ export const config = {
     // Match root path explicitly
     "/",
     // Match all paths except static files and internals
-    "/((?!_next|api|papers).*)",
+    "/((?!_next|api|papers|privacy).*)",
   ],
 };
