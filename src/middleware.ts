@@ -223,6 +223,17 @@ const LOCALE_COOKIE = "NEXT_LOCALE";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  const localeBabelBiblePath = locales.find(
+    (locale) =>
+      pathname === `/${locale}/babel-bible` ||
+      pathname.startsWith(`/${locale}/babel-bible/`),
+  );
+  if (localeBabelBiblePath) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace(`/${localeBabelBiblePath}`, "");
+    return NextResponse.redirect(url);
+  }
+
   const localePrivacyPath = locales.find((locale) =>
     pathname === `/${locale}/privacy/babel-bible`,
   );
@@ -260,6 +271,8 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/api") ||
     pathname.startsWith("/papers") ||
     pathname.startsWith("/privacy") ||
+    pathname === "/babel-bible" ||
+    pathname.startsWith("/babel-bible/") ||
     pathname.includes(".")
   ) {
     return NextResponse.next();
