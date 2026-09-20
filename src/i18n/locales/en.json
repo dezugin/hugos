@@ -116,7 +116,10 @@
     "paper_1_desc": "Research analyzing political attitude networks in Brazil using the ResIN methodology, exploring polarization patterns and network dynamics in Brazilian politics.",
     "paper_1_tags": "Network Science, Political Science, Data Analysis",
     "paper_2_desc": "Bachelor's thesis exploring the network effects of firehosing disinformation tactics and their propagation patterns in social networks.",
-    "paper_2_tags": "Disinformation, Network Analysis, Social Media"
+    "paper_2_tags": "Disinformation, Network Analysis, Social Media",
+    "type_postgraduate": "postgraduate research",
+    "paper_3_desc": "Postgraduate research combining Bitcoin transaction traces, graph metrics, and institutional sources to analyze addresses associated with Russian intelligence agencies, with explicit evidence grading and limits on attribution.",
+    "paper_3_tags": "Blockchain Forensics, Cyber Attribution, Graph Analysis"
   },
   "courses": {
     "command": "cat certifications.json",

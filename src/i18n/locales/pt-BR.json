@@ -116,7 +116,10 @@
     "paper_1_desc": "Pesquisa analisando redes de atitudes políticas no Brasil usando a metodologia ResIN, explorando padrões de polarização e dinâmicas de rede na política brasileira.",
     "paper_1_tags": "Ciência de Redes, Ciência Política, Análise de Dados",
     "paper_2_desc": "Trabalho de conclusão de curso explorando os efeitos de rede das táticas de desinformação firehosing e seus padrões de propagação em redes sociais.",
-    "paper_2_tags": "Desinformação, Análise de Redes, Mídias Sociais"
+    "paper_2_tags": "Desinformação, Análise de Redes, Mídias Sociais",
+    "type_postgraduate": "pesquisa de pós-graduação",
+    "paper_3_desc": "Pesquisa de pós-graduação que combina rastros de transações Bitcoin, métricas de grafos e fontes institucionais para analisar endereços associados a agências de inteligência russas, com classificação explícita das evidências e limites de atribuição.",
+    "paper_3_tags": "Forense em Blockchain, Atribuição Cibernética, Análise de Grafos"
   },
   "courses": {
     "command": "cat certificacoes.json",

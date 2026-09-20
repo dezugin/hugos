@@ -17,6 +17,17 @@ interface ResearchProps {
 
 const getPublications = (dict: Dictionary) => [
   {
+    title:
+      "Blockchain Forensic Attribution Applied to the Analysis of Addresses Associated with Russian Intelligence Agencies",
+    authors: "Hugo Souza-Almeida",
+    institution: "IPOG",
+    year: 2026,
+    description: dict.research.paper_3_desc,
+    pdf: "/papers/Blockchain_Forensic_Attribution_IPOG_English.pdf",
+    type: dict.research.type_postgraduate,
+    tags: dict.research.paper_3_tags.split(",").map((t: string) => t.trim()),
+  },
+  {
     title: "Political Attitude Networks in Brazil using ResIN",
     authors: "Hugo Souza-Almeida",
     institution: "UTFPR / UNIGOU",
@@ -62,7 +73,9 @@ export default function Research({ dict }: ResearchProps) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           <div className="bg-black border border-green-900/50 rounded-lg p-4 text-center hover:border-green-500/50 transition-all">
             <FileText className="w-6 h-6 text-green-500 mx-auto mb-2" />
-            <div className="text-2xl font-bold text-green-400 font-mono">2</div>
+            <div className="text-2xl font-bold text-green-400 font-mono">
+              {publications.length}
+            </div>
             <div className="text-xs text-green-600">
               {dict.research.publications}
             </div>
@@ -143,15 +156,17 @@ export default function Research({ dict }: ResearchProps) {
 
                   {/* Links */}
                   <div className="flex flex-wrap gap-4">
-                    <Link
-                      href={paper.github}
-                      target="_blank"
-                      className="inline-flex items-center gap-2 text-sm text-green-400 hover:text-green-300 transition-colors font-mono"
-                    >
-                      <Github className="w-4 h-4" />
-                      {dict.research.view_github}
-                      <ExternalLink className="w-3 h-3" />
-                    </Link>
+                    {paper.github && (
+                      <Link
+                        href={paper.github}
+                        target="_blank"
+                        className="inline-flex items-center gap-2 text-sm text-green-400 hover:text-green-300 transition-colors font-mono"
+                      >
+                        <Github className="w-4 h-4" />
+                        {dict.research.view_github}
+                        <ExternalLink className="w-3 h-3" />
+                      </Link>
+                    )}
                     <a
                       href={paper.pdf}
                       download
