@@ -7,7 +7,10 @@ import {
   Terminal,
   GraduationCap,
   Download,
+  Eye,
+  X,
 } from "lucide-react";
+import { useState } from "react";
 import Link from "next/link";
 import type { Dictionary } from "@/i18n/dictionaries";
 
@@ -54,6 +57,7 @@ const getPublications = (dict: Dictionary) => [
 
 export default function Research({ dict }: ResearchProps) {
   const publications = getPublications(dict);
+  const [viewingPdf, setViewingPdf] = useState<string | null>(null);
 
   return (
     <section id="research" className="py-20 bg-gray-950">
@@ -156,6 +160,26 @@ export default function Research({ dict }: ResearchProps) {
 
                   {/* Links */}
                   <div className="flex flex-wrap gap-4">
+                    <button
+                      type="button"
+                      aria-expanded={viewingPdf === paper.pdf}
+                      aria-controls={`paper-preview-${index}`}
+                      onClick={() =>
+                        setViewingPdf((current) =>
+                          current === paper.pdf ? null : paper.pdf,
+                        )
+                      }
+                      className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors font-mono focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+                    >
+                      {viewingPdf === paper.pdf ? (
+                        <X className="w-4 h-4" aria-hidden="true" />
+                      ) : (
+                        <Eye className="w-4 h-4" aria-hidden="true" />
+                      )}
+                      {viewingPdf === paper.pdf
+                        ? dict.research.close_pdf
+                        : dict.research.view_pdf}
+                    </button>
                     {paper.github && (
                       <Link
                         href={paper.github}
@@ -177,6 +201,47 @@ export default function Research({ dict }: ResearchProps) {
                     </a>
                   </div>
                 </div>
+              </div>
+              <div
+                id={`paper-preview-${index}`}
+                hidden={viewingPdf !== paper.pdf}
+              >
+                {viewingPdf === paper.pdf && (
+                  <div className="mt-6 overflow-hidden rounded-lg border border-green-900/50">
+                    <div className="flex flex-wrap items-center justify-between gap-3 bg-gray-950 p-3">
+                      <p className="text-xs text-green-300/70">
+                        {dict.research.pdf_help}
+                      </p>
+                      <a
+                        href={paper.pdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 font-mono"
+                      >
+                        {dict.research.open_pdf}
+                        <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    </div>
+                    <object
+                      data={`${paper.pdf}#view=FitH`}
+                      type="application/pdf"
+                      title={paper.title}
+                      className="block h-[70vh] min-h-[320px] w-full bg-white"
+                    >
+                      <p className="p-6 text-gray-900">
+                        {dict.research.pdf_help}{" "}
+                        <a
+                          href={paper.pdf}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-700 underline"
+                        >
+                          {dict.research.open_pdf}
+                        </a>
+                      </p>
+                    </object>
+                  </div>
+                )}
               </div>
             </div>
           ))}

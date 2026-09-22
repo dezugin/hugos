@@ -103,6 +103,10 @@
     "repos_count": "32+ repositórios • Arctic Code Vault Contributor"
   },
   "research": {
+    "view_pdf": "Visualizar PDF",
+    "close_pdf": "Fechar PDF",
+    "open_pdf": "Abrir em nova aba",
+    "pdf_help": "Se a prévia não estiver disponível, abra o PDF em uma nova aba ou baixe o arquivo.",
     "command": "cat artigos_pesquisa.bib",
     "title": "Pesquisa",
     "download_pdf": "Baixar PDF",
